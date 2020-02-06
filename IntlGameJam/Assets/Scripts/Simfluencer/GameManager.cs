@@ -8,8 +8,7 @@ namespace Simfluencer {
     }
 
     public class GameManager : MonoBehaviour, IGameManager {
-        private static IGameManager instance;
-        public static IGameManager Instance => instance;
+        public static IGameManager Instance { get; private set; }
 
         public PlayerInfo PlayerInfo { get; private set; }
 
@@ -17,15 +16,15 @@ namespace Simfluencer {
         [SerializeField] private float startCredibility;
 
         private void Awake() {
-            PlayerInfo = new PlayerInfo();
-            instance = this;
+            PlayerInfo = new PlayerInfo(1000, .62f);
+            Instance = this;
         }
 
         private void Start() { }
 
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                PlayerInfo.Followers += 4000;
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Application.Quit();
             }
         }
     }

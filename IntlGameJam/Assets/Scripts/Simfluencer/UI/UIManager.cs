@@ -8,12 +8,12 @@ namespace Simfluencer.UI {
         [SerializeField] private List<Screen> screens;
 
         private Screen activeScreen;
-        
+
         private void Start() {
             // TODO check integrity of scene setup while fetching components
             screens = GetComponentsInChildren<Screen>(true).ToList();
             screens.ForEach(s => s.Active = false);
-            
+
             TransitionToScreen(startScreenName);
         }
 
@@ -24,7 +24,18 @@ namespace Simfluencer.UI {
         }
 
         private Screen GetScreen(string name) {
-            return screens.First(screen => screen.Name == name);
+            //TODO cleanup
+            var maintype = name.Split('.')[0];
+            var screen = screens.First(s => s.Name == maintype);
+            
+            if (screen is PostScreen pScreen) {
+                var subtype = name.Split('.')[1];
+                pScreen.Category = subtype;
+                
+                return pScreen;
+            }
+
+            return screen;
         }
     }
 }

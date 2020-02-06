@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 namespace Simfluencer.UI {
     [RequireComponent(typeof(RectTransform))]
     public class Screen : MonoBehaviour {
+        [SerializeField] protected UIManager uiManager;
         [SerializeField] private string screenName;
         public string Name => screenName;
 
@@ -12,12 +13,12 @@ namespace Simfluencer.UI {
             set {
                 if (value) {
                     Show();
-                    Debug.Log($"Now displaying screen {screenName}");
+                    // Debug.Log($"Now displaying screen {screenName}");
                 }
                 else {
                     Hide();
                 }
-                
+
                 gameObject.SetActive(value);
             }
         }
@@ -26,13 +27,9 @@ namespace Simfluencer.UI {
             Assert.IsNotNull(screenName, $"Screen {name} doesn't have a screen name");
         }
 
-        protected virtual void Show() {
-            
-        }
+        protected virtual void Show() { }
 
-        protected virtual void Hide() {
-            
-        }
+        protected virtual void Hide() { }
 
         // TODO add methods for sliding
     }

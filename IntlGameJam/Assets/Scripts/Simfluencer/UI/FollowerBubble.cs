@@ -15,7 +15,7 @@ namespace Simfluencer.UI {
         }
 
         public void Activate(int followerNumber) {
-            text.text = $"+{followerNumber}";
+            text.text = $"{(followerNumber < 0 ? "" : "+")}{followerNumber}";
             activationTime = Time.time;
             originalColor = text.color;
 

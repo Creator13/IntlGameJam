@@ -24,5 +24,10 @@ namespace Simfluencer {
                 CredibilityChanged?.Invoke(value);
             }
         }
+
+        public PlayerInfo(int followersStart, float credibilityStart) {
+            followers = followersStart;
+            credibility = credibilityStart;
+        }
     }
 }
