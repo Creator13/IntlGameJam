@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e072dfa9344cd3ad06a743eae9a171, type: 3}
   m_Name: Article2
   m_EditorClassIdentifier: 
-  headline: Trees on fire
+  prompt: 
   credibility: 0.661
   influence: 0.351
+  difficulty: 0
+  replies:
+  - content: 
+    type: 0
+  - content: 
+    type: 1
+  - content: 
+    type: 2

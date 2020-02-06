@@ -2,6 +2,12 @@
 
 namespace Simfluencer {
     public static class SettingTools {
+// #if !UNITY_EDITOR
+//         static SettingTools() {
+//             FitTargetResolution();
+//         }
+// #endif
+
         public static void FitTargetResolution() {
             var res = Screen.currentResolution;
             var targetRes = new Resolution {refreshRate = 60, width = 1080, height = 2200};

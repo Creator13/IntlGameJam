@@ -4,22 +4,16 @@ using UnityEngine;
 
 namespace Simfluencer {
     public class ArticlePool {
-        private static ArticlePool instance;
-        public static ArticlePool Instance => instance ?? (instance = new ArticlePool());
+        // private static ArticlePool instance;
+        // public static ArticlePool Instance => instance ?? (instance = new ArticlePool());
 
-        private Dictionary<Article, bool> articles;
+        private Dictionary<Question, bool> articles;
 
-        public ArticlePool() {
-            articles = new Dictionary<Article, bool>();
+        private ArticlePool() {
             LoadArticles();
-
-            var res = GetRandomArticles(4);
-            foreach (var item in res) {
-                Debug.Log(item);
-            }
         }
 
-        public Article[] GetRandomArticles(int count) {
+        public Question[] GetRandomArticles(int count) {
             var pool = articles.Where(pair => !pair.Value).ToList();
             var length = pool.Count();
 
@@ -34,7 +28,13 @@ namespace Simfluencer {
                 randIndexes.Add(index);
             }
 
-            return randIndexes.Select(i => pool[i].Key).ToArray();
+            var returnList = randIndexes.Select(i => pool[i].Key).ToArray();
+            // Mark the items as used
+            foreach (var article in returnList) {
+                articles[article] = true;
+            }
+            
+            return returnList;
         }
 
         public void Reset() {
@@ -43,8 +43,10 @@ namespace Simfluencer {
             }
         }
 
-        private void LoadArticles() {
-            var articles = Resources.LoadAll<Article>("Articles");
+        public void LoadArticles() {
+            this.articles = new Dictionary<Question, bool>();
+            
+            var articles = Resources.LoadAll<Question>("Articles");
             foreach (var article in articles) {
                 this.articles.Add(article, false);
             }
