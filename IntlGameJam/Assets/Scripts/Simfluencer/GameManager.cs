@@ -16,7 +16,8 @@ namespace Simfluencer {
         [SerializeField] private float startCredibility;
 
         private void Awake() {
-            PlayerInfo = new PlayerInfo(48629, .62f);
+            SettingTools.FitTargetResolution();
+            PlayerInfo = new PlayerInfo(48629, .58f);
             Instance = this;
         }
 

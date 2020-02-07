@@ -17,6 +17,11 @@ namespace Simfluencer.UI.Screen {
         }
 
         protected override void Show() {
+            sciPos.onClick.RemoveAllListeners();
+            sciNeg.onClick.RemoveAllListeners();
+            consPos.onClick.RemoveAllListeners();
+            consNeg.onClick.RemoveAllListeners();
+            
             title.text = category.Name;
 
             sciPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[0];
@@ -37,7 +42,7 @@ namespace Simfluencer.UI.Screen {
 
         private void RegisterSciPos() {
             var followPct = Random.Range(0.02f, 0.04f);
-            var credPct = Random.Range(0.05f, 0.15f);
+            var credPct = Random.Range(0.15f, 0.23f);
 
             AddFollowers(followPct);
             AddCredibility(credPct);
@@ -47,7 +52,7 @@ namespace Simfluencer.UI.Screen {
 
         private void RegisterSciNeg() {
             var followPct = Random.Range(-.015f, .005f);
-            var credPct = Random.Range(0.1f, 0.2f);
+            var credPct = Random.Range(0.08f, 0.18f);
 
             AddFollowers(followPct);
             AddCredibility(credPct);
@@ -57,7 +62,7 @@ namespace Simfluencer.UI.Screen {
 
         private void RegisterConsPos() {
             var followPct = Random.Range(0.03f, 0.05f);
-            var credPct = Random.Range(-.1f, 0.005f);
+            var credPct = Random.Range(-.15f, -0.05f);
 
             AddFollowers(followPct);
             AddCredibility(credPct);
@@ -67,7 +72,7 @@ namespace Simfluencer.UI.Screen {
 
         private void RegisterConsNeg() {
             var followPct = Random.Range(-.005f, 0.02f);
-            var credPct = Random.Range(-.5f, -.2f);
+            var credPct = Random.Range(-.23f, -.15f);
 
             AddFollowers(followPct);
             AddCredibility(credPct);
@@ -76,7 +81,8 @@ namespace Simfluencer.UI.Screen {
         }
 
         private static void AddCredibility(float pct) {
-            GameManager.Instance.PlayerInfo.Credibility *= (1 + pct);
+            Debug.Log(pct);
+            GameManager.Instance.PlayerInfo.Credibility += pct;
         }
 
         private static void AddFollowers(float pct) {

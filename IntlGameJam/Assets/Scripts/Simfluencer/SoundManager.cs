@@ -29,7 +29,7 @@ namespace Simfluencer {
             if (!musicSource.clip) SwitchNeutral();
             musicSource.loop = true;
             
-            musicSource.Play();
+            if (!musicSource.isPlaying) musicSource.Play();
         }
 
         public void SwitchNeutral() {

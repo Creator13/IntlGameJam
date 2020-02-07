@@ -9,7 +9,7 @@ namespace Simfluencer {
     public class PlayerInfo {
         public event Action<int> FollowersChanged;
         public event Action<float> CredibilityChanged;
-        public event Action<Scenario> ScenerioTriggered;
+        public event Action<Scenario> ScenarioTriggered;
 
         private int followers;
         private float credibility;
@@ -39,13 +39,13 @@ namespace Simfluencer {
 
         private void CheckCredibility() {
             if (credibility < .4) {
-                ScenerioTriggered?.Invoke(Scenario.Conspiracy);
+                ScenarioTriggered?.Invoke(Scenario.Conspiracy);
             }
             else if (credibility > .8) {
-                ScenerioTriggered?.Invoke(Scenario.Science);
+                ScenarioTriggered?.Invoke(Scenario.Science);
             }
             else {
-                ScenerioTriggered?.Invoke(Scenario.Neutral);
+                ScenarioTriggered?.Invoke(Scenario.Neutral);
             }
         }
     }

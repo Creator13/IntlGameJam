@@ -1,35 +1,41 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Simfluencer.UI {
-    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Image))]
     public class BackgroundSwitcher : MonoBehaviour {
         [SerializeField] private Sprite neutralBackground;
         [SerializeField] private Sprite badBackground;
         [SerializeField] private Sprite goodBackground;
 
-        private new SpriteRenderer renderer;
+        private new Image renderer;
 
         private void Awake() {
+            renderer = GetComponent<Image>();
             renderer.sprite = neutralBackground;
         }
 
         private void OnValidate() {
-            renderer = GetComponent<SpriteRenderer>();
+            renderer = GetComponent<Image>();
             renderer.sprite = neutralBackground ? neutralBackground : null;
         }
 
         private void Start() {
-            GameManager.Instance.PlayerInfo.ScenerioTriggered += SwitchScenario;
+            GameManager.Instance.PlayerInfo.ScenarioTriggered += SwitchScenario;
+        }
+
+        private void OnEnable() {
+            if (GameManager.Instance != null) GameManager.Instance.PlayerInfo.ScenarioTriggered += SwitchScenario;
         }
 
         private void OnDisable() {
-            GameManager.Instance.PlayerInfo.ScenerioTriggered -= SwitchScenario;
+            GameManager.Instance.PlayerInfo.ScenarioTriggered -= SwitchScenario;
             
         }
 
         private void OnDestroy() {
-            GameManager.Instance.PlayerInfo.ScenerioTriggered -= SwitchScenario;
+            GameManager.Instance.PlayerInfo.ScenarioTriggered -= SwitchScenario;
         }
 
         private void SwitchScenario(Scenario scenario) {
