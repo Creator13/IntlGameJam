@@ -28,7 +28,7 @@ namespace Simfluencer.UI {
                 passedTime = Time.time - activationTime;
                 var percent = passedTime / duration;
 
-                transform.localPosition += Vector3.up * (Time.deltaTime * 40);
+                transform.localPosition += Vector3.up * (Time.deltaTime * 20);
 
                 var newColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1 - percent);
                 text.color = newColor;

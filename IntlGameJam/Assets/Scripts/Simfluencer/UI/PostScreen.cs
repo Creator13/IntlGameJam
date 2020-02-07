@@ -32,7 +32,7 @@ namespace Simfluencer.UI {
 
         private void DisableCategory() {
             category.Used = true;
-            uiManager.TransitionToScreen("Update");
+            uiManager.TransitionToScreen("Main");
         }
 
         private void RegisterSciPos() {

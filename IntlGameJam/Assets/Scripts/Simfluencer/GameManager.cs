@@ -16,11 +16,9 @@ namespace Simfluencer {
         [SerializeField] private float startCredibility;
 
         private void Awake() {
-            PlayerInfo = new PlayerInfo(1000, .62f);
+            PlayerInfo = new PlayerInfo(48629, .62f);
             Instance = this;
         }
-
-        private void Start() { }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Escape)) {

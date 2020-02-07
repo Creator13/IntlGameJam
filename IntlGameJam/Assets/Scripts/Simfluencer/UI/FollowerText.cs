@@ -20,7 +20,7 @@ namespace Simfluencer.UI {
 
         private void UpdateText(int added) {
             if (!text) text = GetComponent<TextMeshProUGUI>();
-            text.text = $"Followers: {(GameManager.Instance == null ? 0 : GameManager.Instance.PlayerInfo.Followers)}";
+            text.text = $"Followers: {(GameManager.Instance == null ? 0 : GameManager.Instance.PlayerInfo.Followers) / 1000f:F1}K";
         }
     }
 }
