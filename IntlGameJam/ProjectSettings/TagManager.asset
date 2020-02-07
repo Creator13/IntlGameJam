@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 471107949
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG-scene
+    uniqueID: 861087207
+    locked: 0
+  - name: Room_layer
+    uniqueID: 3674648979
+    locked: 0
+  - name: Character Layer
+    uniqueID: 728704093
     locked: 0
