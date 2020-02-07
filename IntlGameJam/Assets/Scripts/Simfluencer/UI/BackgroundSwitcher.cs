@@ -11,10 +11,42 @@ namespace Simfluencer.UI {
         private new SpriteRenderer renderer;
 
         private void Awake() {
-            renderer = GetComponent<SpriteRenderer>();
             renderer.sprite = neutralBackground;
         }
-        
-        
+
+        private void OnValidate() {
+            renderer = GetComponent<SpriteRenderer>();
+            renderer.sprite = neutralBackground ? neutralBackground : null;
+        }
+
+        private void Start() {
+            GameManager.Instance.PlayerInfo.ScenerioTriggered += SwitchScenario;
+        }
+
+        private void OnDisable() {
+            GameManager.Instance.PlayerInfo.ScenerioTriggered -= SwitchScenario;
+            
+        }
+
+        private void OnDestroy() {
+            GameManager.Instance.PlayerInfo.ScenerioTriggered -= SwitchScenario;
+        }
+
+        private void SwitchScenario(Scenario scenario) {
+            switch (scenario) {
+                case Scenario.Conspiracy:
+                    renderer.sprite = badBackground;
+                    break;
+                case Scenario.Science:
+                    renderer.sprite = goodBackground;
+                    break;
+                case Scenario.Neutral:
+                    renderer.sprite = neutralBackground;
+                    break;
+                default:
+                    renderer.sprite = neutralBackground;
+                    break;
+            }
+        }
     }
 }

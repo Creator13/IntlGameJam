@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Simfluencer.UI.Screen;
 using UnityEngine;
 
 namespace Simfluencer.UI {
     public class UIManager : MonoBehaviour {
         [SerializeField] private string startScreenName;
-        [SerializeField] private List<Screen> screens;
+        [SerializeField] private List<Screen.Screen> screens;
 
-        private Screen activeScreen;
+        private Screen.Screen activeScreen;
 
         private void Start() {
             // TODO check integrity of scene setup while fetching components
-            screens = GetComponentsInChildren<Screen>(true).ToList();
+            screens = GetComponentsInChildren<Screen.Screen>(true).ToList();
             screens.ForEach(s => s.Active = false);
 
             TransitionToScreen(startScreenName);
@@ -23,7 +24,7 @@ namespace Simfluencer.UI {
             activeScreen.Active = true;
         }
 
-        private Screen GetScreen(string name) {
+        private Screen.Screen GetScreen(string name) {
             //TODO cleanup
             var maintype = name.Split('.')[0];
             var screen = screens.First(s => s.Name == maintype);

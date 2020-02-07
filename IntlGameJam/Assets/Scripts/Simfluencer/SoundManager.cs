@@ -13,6 +13,8 @@ namespace Simfluencer {
         private AudioSource musicSource;
         private AudioSource fxSource;
         [SerializeField] private AudioClip music;
+        [SerializeField] private AudioClip posMusic;
+        [SerializeField] private AudioClip negMusic;
 
         private void Awake() {
             instance = this;
@@ -24,12 +26,25 @@ namespace Simfluencer {
         }
 
         public void PlayMusic() {
-            if (!musicSource.clip) musicSource.clip = music;
+            if (!musicSource.clip) SwitchNeutral();
             musicSource.loop = true;
             
             musicSource.Play();
         }
 
+        public void SwitchNeutral() {
+            musicSource.clip = music;
+        }
+
+        public void SwitchPositive() {
+            musicSource.clip = posMusic;
+        }
+
+        public void SwitchNegative() {
+            musicSource.clip = negMusic;
+        }
+        
+        
         public void StopMusic() {
             musicSource.Pause();
         }
