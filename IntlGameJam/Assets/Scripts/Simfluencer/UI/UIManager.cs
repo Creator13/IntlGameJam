@@ -8,20 +8,18 @@ namespace Simfluencer.UI {
         [SerializeField] private string startScreenName;
         [SerializeField] private List<Screen.Screen> screens;
 
-        private Screen.Screen activeScreen;
+        public Screen.Screen ActiveScreen { get; private set; }
 
         private void Start() {
             // TODO check integrity of scene setup while fetching components
-            screens = GetComponentsInChildren<Screen.Screen>(true).ToList();
+            GetScreens();
             screens.ForEach(s => s.Active = false);
 
             TransitionToScreen(startScreenName);
         }
 
         public void TransitionToScreen(string name) {
-            if (activeScreen != null) activeScreen.Active = false;
-            activeScreen = GetScreen(name);
-            activeScreen.Active = true;
+            SetActiveScreen(GetScreen(name));
         }
 
         private Screen.Screen GetScreen(string name) {
@@ -37,6 +35,17 @@ namespace Simfluencer.UI {
             }
 
             return screen;
+        }
+
+        public List<Screen.Screen> GetScreens() {
+            screens = GetComponentsInChildren<Screen.Screen>(true).ToList();
+            return screens;
+        }
+
+        private void SetActiveScreen(Screen.Screen screen) {
+            if (ActiveScreen != null) ActiveScreen.Active = false;
+            ActiveScreen = screen;
+            ActiveScreen.Active = true;
         }
     }
 }
