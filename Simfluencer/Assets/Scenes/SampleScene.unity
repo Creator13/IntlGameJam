@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1145,7 +1146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 79.90015}
+  m_AnchoredPosition: {x: 0, y: 79.90039}
   m_SizeDelta: {x: -60, y: 127.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &380423737
@@ -1280,6 +1281,7 @@ GameObject:
   - component: {fileID: 405881371}
   - component: {fileID: 405881370}
   - component: {fileID: 405881369}
+  - component: {fileID: 405881372}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1398,6 +1400,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405881367}
   m_CullTransparentMesh: 0
+--- !u!114 &405881372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405881367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077ed21ab97ded04fa8b48f70e5d5aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: 13934__adcbicycle__6
 --- !u!1 &430182244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1614,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2640,6 +2656,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3945,6 +3962,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4491,6 +4509,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5167,11 +5186,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414045620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0f0158d62e292e4ba827d71a331304c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableMusic: 0
+  enableFx: 1
   music: {fileID: 8300000, guid: ff625d720b83a89409149c7e4e480566, type: 3}
   posMusic: {fileID: 0}
   negMusic: {fileID: 0}
@@ -5215,6 +5236,7 @@ GameObject:
   - component: {fileID: 1508955443}
   - component: {fileID: 1508955442}
   - component: {fileID: 1508955441}
+  - component: {fileID: 1508955444}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -5323,6 +5345,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508955439}
   m_CullTransparentMesh: 0
+--- !u!114 &1508955444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508955439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077ed21ab97ded04fa8b48f70e5d5aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: 58904__rock-savage__western-shot-modern-2
 --- !u!1 &1515439736
 GameObject:
   m_ObjectHideFlags: 0
@@ -5855,6 +5890,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -6493,6 +6529,7 @@ GameObject:
   - component: {fileID: 1802511867}
   - component: {fileID: 1802511866}
   - component: {fileID: 1802511865}
+  - component: {fileID: 1802511868}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -6601,6 +6638,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802511863}
   m_CullTransparentMesh: 0
+--- !u!114 &1802511868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802511863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077ed21ab97ded04fa8b48f70e5d5aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: 
 --- !u!1 &1814938886
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,6 +7172,7 @@ GameObject:
   - component: {fileID: 1992395827}
   - component: {fileID: 1992395826}
   - component: {fileID: 1992395825}
+  - component: {fileID: 1992395828}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7241,6 +7292,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992395823}
   m_CullTransparentMesh: 0
+--- !u!114 &1992395828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992395823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077ed21ab97ded04fa8b48f70e5d5aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundName: 2087__opm__kk-set3
 --- !u!1 &1996940184
 GameObject:
   m_ObjectHideFlags: 0
@@ -8248,6 +8312,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

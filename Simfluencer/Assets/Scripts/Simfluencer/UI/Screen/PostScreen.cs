@@ -17,10 +17,10 @@ namespace Simfluencer.UI.Screen {
         }
 
         protected override void Show() {
-            sciPos.onClick.RemoveAllListeners();
-            sciNeg.onClick.RemoveAllListeners();
-            consPos.onClick.RemoveAllListeners();
-            consNeg.onClick.RemoveAllListeners();
+            sciPos.onClick.RemoveListener(RegisterSciPos);
+            sciNeg.onClick.RemoveListener(RegisterSciNeg);
+            consPos.onClick.RemoveListener(RegisterConsPos);
+            consNeg.onClick.RemoveListener(RegisterConsNeg);
             
             title.text = category.Name;
 

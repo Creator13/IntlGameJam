@@ -1,6 +1,4 @@
-﻿using System;
-using Simfluencer.FSM;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Simfluencer {
     public interface IGameManager {
@@ -16,7 +14,7 @@ namespace Simfluencer {
         [SerializeField] private float startCredibility;
 
         private void Awake() {
-            SettingTools.FitTargetResolution();
+            // SettingTools.FitTargetResolution();
             PlayerInfo = new PlayerInfo(48629, .58f);
             Instance = this;
         }
