@@ -13,6 +13,7 @@ namespace Simfluencer {
 
         private int followers;
         private float credibility;
+        private string name;
 
         public int Followers {
             get => followers;
@@ -28,7 +29,15 @@ namespace Simfluencer {
             set {
                 credibility = Mathf.Clamp(value, 0, 1);
                 CheckCredibility();
-                CredibilityChanged?.Invoke(value);
+                CredibilityChanged?.Invoke(credibility);
+            }
+        }
+
+        public string Name {
+            get => name;
+            set {
+                name = value;
+                Debug.Log($"New name: {name}");
             }
         }
 

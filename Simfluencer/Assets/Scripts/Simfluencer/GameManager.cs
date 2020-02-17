@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Simfluencer.UI;
+using UnityEngine;
 
 namespace Simfluencer {
     public interface IGameManager {
@@ -10,16 +11,14 @@ namespace Simfluencer {
 
         public PlayerInfo PlayerInfo { get; private set; }
 
-        [SerializeField] private int startFollowers;
-        [SerializeField] private float startCredibility;
+        [SerializeField] private int startFollowers = 48629;
+        [SerializeField, Range(0, 1)] private float startCredibility = 58f;
 
         private void Awake() {
             // SettingTools.FitTargetResolution();
-            PlayerInfo = new PlayerInfo(48629, .58f);
+            PlayerInfo = new PlayerInfo(startFollowers, startCredibility);
             Instance = this;
         }
-
-        private void Start() { }
 
         public void QuitGame() {
             Application.Quit();
