@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace cvanbattum.Audio.Editor {
-    [CustomEditor(typeof(ButtonSoundEffect))]
+    [CustomEditor(typeof(SoundEffectPlayer))]
     public class SoundEffectPlayerInspector : UnityEditor.Editor {
         public override VisualElement CreateInspectorGUI() {
             var root = new VisualElement();
@@ -33,4 +33,7 @@ namespace cvanbattum.Audio.Editor {
             return root;
         }
     }
+
+    [CustomEditor(typeof(ButtonSoundEffect))]
+    public class ButtonSoundEffectInspector : SoundEffectPlayerInspector { }
 }

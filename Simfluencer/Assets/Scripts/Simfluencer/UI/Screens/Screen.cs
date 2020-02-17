@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Simfluencer.UI.Screen {
+namespace Simfluencer.UI.Screens {
     [RequireComponent(typeof(RectTransform))]
     public class Screen : MonoBehaviour {
         [SerializeField] protected UIManager uiManager;
@@ -21,10 +21,6 @@ namespace Simfluencer.UI.Screen {
 
                 gameObject.SetActive(value);
             }
-        }
-
-        private void OnValidate() {
-            Assert.IsNotNull(screenName, $"Screen {name} doesn't have a screen name");
         }
 
         protected virtual void Show() { }

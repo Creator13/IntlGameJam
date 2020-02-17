@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-namespace Simfluencer.UI.Screen {
+namespace Simfluencer.UI.Screens {
     public class UpdateScreen : Screen {
         [SerializeField] private Transform buttonPanel;
 

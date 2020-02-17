@@ -1,29 +1,44 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Simfluencer.UI.Screen;
+using Simfluencer.UI.Screens;
 using UnityEngine;
+using Screen = Simfluencer.UI.Screens.Screen;
 
 namespace Simfluencer.UI {
     public class UIManager : MonoBehaviour {
         [SerializeField] private string startScreenName;
-        [SerializeField] private List<Screen.Screen> screens;
+        [SerializeField] private List<Screen> screens;
 
-        public Screen.Screen ActiveScreen { get; private set; }
+        private Screen activeScreen;
+
+        public Screen ActiveScreen {
+            get => activeScreen;
+            set {
+                if (activeScreen != null) {
+                    activeScreen.Active = false;
+                }
+
+                activeScreen = value;
+                activeScreen.Active = true;
+            }
+        }
 
         private void Start() {
             // TODO check integrity of scene setup while fetching components
-            GetScreens();
+            screens = GetScreens();
             screens.ForEach(s => s.Active = false);
 
             TransitionToScreen(startScreenName);
         }
 
         public void TransitionToScreen(string name) {
-            SetActiveScreen(GetScreen(name));
+            ActiveScreen = GetScreen(name);
         }
 
-        private Screen.Screen GetScreen(string name) {
+        private Screen GetScreen(string name) {
             //TODO cleanup
+            if (screens == null) screens = GetScreens();
+            
             var maintype = name.Split('.')[0];
             var screen = screens.First(s => s.Name == maintype);
             
@@ -37,15 +52,8 @@ namespace Simfluencer.UI {
             return screen;
         }
 
-        public List<Screen.Screen> GetScreens() {
-            screens = GetComponentsInChildren<Screen.Screen>(true).ToList();
-            return screens;
-        }
-
-        private void SetActiveScreen(Screen.Screen screen) {
-            if (ActiveScreen != null) ActiveScreen.Active = false;
-            ActiveScreen = screen;
-            ActiveScreen.Active = true;
+        public List<Screen> GetScreens() { 
+            return GetComponentsInChildren<Screen>(true).ToList();
         }
     }
 }

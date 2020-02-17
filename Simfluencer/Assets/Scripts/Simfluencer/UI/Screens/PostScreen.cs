@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Simfluencer.UI.Screen {
+namespace Simfluencer.UI.Screens {
     public class PostScreen : Screen {
         [SerializeField] private TextMeshProUGUI title;
         [SerializeField] private Button sciPos;
