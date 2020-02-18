@@ -8,7 +8,6 @@ namespace cvanbattum.Audio {
         void PlayMusic();
 
         void PlayEffect(string name);
-        // List<string> GetEffectsList();
     }
 
     public class SoundManager : MonoBehaviour, ISoundManager {

@@ -20,6 +20,7 @@ namespace Simfluencer.UI.Screens {
                     buttons[i].interactable = false;
                 }
                 else {
+                    // FIXME when using more than one listener (eg for audio) on the button, they will get removed as well
                     buttons[i].onClick.RemoveAllListeners();
                     var i1 = i;
                     buttons[i].onClick

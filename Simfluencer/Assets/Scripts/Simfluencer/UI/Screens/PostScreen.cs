@@ -17,11 +17,6 @@ namespace Simfluencer.UI.Screens {
         }
 
         protected override void Show() {
-            sciPos.onClick.RemoveListener(RegisterSciPos);
-            sciNeg.onClick.RemoveListener(RegisterSciNeg);
-            consPos.onClick.RemoveListener(RegisterConsPos);
-            consNeg.onClick.RemoveListener(RegisterConsNeg);
-            
             title.text = category.Name;
 
             sciPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[0];
@@ -33,6 +28,13 @@ namespace Simfluencer.UI.Screens {
             sciNeg.onClick.AddListener(RegisterSciNeg);
             consPos.onClick.AddListener(RegisterConsPos);
             consNeg.onClick.AddListener(RegisterConsNeg);
+        }
+
+        protected override void Hide() {
+            sciPos.onClick.RemoveListener(RegisterSciPos);
+            sciNeg.onClick.RemoveListener(RegisterSciNeg);
+            consPos.onClick.RemoveListener(RegisterConsPos);
+            consNeg.onClick.RemoveListener(RegisterConsNeg);
         }
 
         private void DisableCategory() {
