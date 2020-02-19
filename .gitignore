@@ -97,3 +97,8 @@ _UpgradeReport_Files/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+## Hide status bar plugin
+src/UnityShowAndroidStatusBar/.gradle/
+src/UnityShowAndroidStatusBar/build/
+src/UnityShowAndroidStatusBar/libs/classes.jar

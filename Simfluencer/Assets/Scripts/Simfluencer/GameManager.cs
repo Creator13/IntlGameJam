@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Simfluencer {
     public interface IGameManager {
@@ -13,7 +14,7 @@ namespace Simfluencer {
         public PostHistory PostHistory { get; private set; }
 
         [SerializeField] private int startFollowers = 48629;
-        [SerializeField, Range(0, 1)] private float startCredibility = 58f;
+        [SerializeField, Range(0, 1)] private float startCredibility = .58f;
         //TODO test code plz remove
         [SerializeField] private Profile testProfile;
 
