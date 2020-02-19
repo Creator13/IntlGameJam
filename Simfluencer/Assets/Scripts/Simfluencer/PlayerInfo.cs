@@ -3,9 +3,11 @@ using UnityEngine;
 
 namespace Simfluencer {
     public enum Scenario {
-        Neutral, Science, Conspiracy
+        Neutral,
+        Science,
+        Conspiracy
     }
-    
+
     public class PlayerInfo {
         public event Action<int> FollowersChanged;
         public event Action<float> CredibilityChanged;
@@ -22,13 +24,25 @@ namespace Simfluencer {
                 FollowersChanged?.Invoke(value - oldValue);
             }
         }
-        
+
         public float Credibility {
             get => credibility;
             set {
                 credibility = Mathf.Clamp(value, 0, 1);
                 CheckCredibility();
-                CredibilityChanged?.Invoke(value);
+                CredibilityChanged?.Invoke(credibility);
+            }
+        }
+
+        public Profile Profile { get; private set; }
+
+        public string Name {
+            set {
+                if (!Profile) Profile = ScriptableObject.CreateInstance<Profile>();
+
+                if (value == Profile.Username) return;
+
+                Profile.Username = value;
             }
         }
 

@@ -29,14 +29,8 @@ namespace Simfluencer.UI.Editor {
         }
 
         private void OnHierarchyChange() {
-            Debug.Log("Fire");
             LoadScreens();
         }
-        
-        // private void OnInspectorUpdate() {
-        //     Debug.Log("fire");
-        //     LoadScreens();
-        // }
 
         private void LoadScreens() {
             if (!uiManager) uiManager = FindObjectOfType<UIManager>();

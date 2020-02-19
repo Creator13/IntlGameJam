@@ -8,7 +8,6 @@ namespace cvanbattum.Audio {
         void PlayMusic();
 
         void PlayEffect(string name);
-        // List<string> GetEffectsList();
     }
 
     public class SoundManager : MonoBehaviour, ISoundManager {
@@ -72,7 +71,6 @@ namespace cvanbattum.Audio {
         }
 
         public void PlayEffect(string name) {
-            Debug.Log($"playing {name}");
             fxSource.PlayOneShot(EffectClips.Find(clip => clip.name == name));
         }
 

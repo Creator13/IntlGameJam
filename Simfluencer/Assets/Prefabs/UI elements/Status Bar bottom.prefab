@@ -65,9 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3055784084851065696, guid: 1b1cc0fe2b555bf4fa85b11ead698bd0,
-    type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 1b1cc0fe2b555bf4fa85b11ead698bd0, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -529,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -248.29999, y: 30.550001}
+  m_AnchoredPosition: {x: -248.29999, y: 35.550003}
   m_SizeDelta: {x: 449.1, y: 51.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8777185267960805280
@@ -587,8 +586,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -625,7 +624,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 2.8824692, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8777185267960805281}
     characterCount: 16
@@ -727,9 +726,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3055784084851065696, guid: 1b1cc0fe2b555bf4fa85b11ead698bd0,
-    type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 1b1cc0fe2b555bf4fa85b11ead698bd0, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
