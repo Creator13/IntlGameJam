@@ -6,7 +6,14 @@ namespace Simfluencer {
         [SerializeField] private string username;
         [SerializeField] private Sprite picture;
 
-        public string Username => username;
-        public Sprite Picture => picture;
+        public string Username {
+            get => username;
+            set => username = value;
+        }
+
+        public Sprite Picture {
+            get => picture;
+            set => picture = value;
+        }
     }
 }

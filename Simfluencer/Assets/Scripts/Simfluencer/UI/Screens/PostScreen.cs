@@ -43,6 +43,8 @@ namespace Simfluencer.UI.Screens {
         }
 
         private void RegisterSciPos() {
+            GameManager.Instance.PostHistory.AddPost(new Post(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
+            
             var followPct = Random.Range(0.02f, 0.04f);
             var credPct = Random.Range(0.15f, 0.23f);
 
@@ -53,6 +55,8 @@ namespace Simfluencer.UI.Screens {
         }
 
         private void RegisterSciNeg() {
+            GameManager.Instance.PostHistory.AddPost(new Post(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
+            
             var followPct = Random.Range(-.015f, .005f);
             var credPct = Random.Range(0.08f, 0.18f);
 
@@ -63,6 +67,8 @@ namespace Simfluencer.UI.Screens {
         }
 
         private void RegisterConsPos() {
+            GameManager.Instance.PostHistory.AddPost(new Post(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
+            
             var followPct = Random.Range(0.03f, 0.05f);
             var credPct = Random.Range(-.15f, -0.05f);
 
@@ -73,6 +79,8 @@ namespace Simfluencer.UI.Screens {
         }
 
         private void RegisterConsNeg() {
+            GameManager.Instance.PostHistory.AddPost(new Post(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
+            
             var followPct = Random.Range(-.005f, 0.02f);
             var credPct = Random.Range(-.23f, -.15f);
 
@@ -83,7 +91,6 @@ namespace Simfluencer.UI.Screens {
         }
 
         private static void AddCredibility(float pct) {
-            Debug.Log(pct);
             GameManager.Instance.PlayerInfo.Credibility += pct;
         }
 

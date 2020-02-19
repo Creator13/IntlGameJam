@@ -71,7 +71,6 @@ namespace cvanbattum.Audio {
         }
 
         public void PlayEffect(string name) {
-            Debug.Log($"playing {name}");
             fxSource.PlayOneShot(EffectClips.Find(clip => clip.name == name));
         }
 
