@@ -12,6 +12,7 @@ namespace Simfluencer {
 
         public PlayerInfo PlayerInfo { get; private set; }
         public PostHistory PostHistory { get; private set; }
+        public TimeManager TimeManager { get; private set; }
 
         [SerializeField] private int startFollowers = 48629;
         [SerializeField, Range(0, 1)] private float startCredibility = .58f;
@@ -22,6 +23,7 @@ namespace Simfluencer {
             // SettingTools.FitTargetResolution();
             PlayerInfo = new PlayerInfo(startFollowers, startCredibility);
             PostHistory = new PostHistory();
+            TimeManager = new TimeManager(new DateTime(2020, 02,19), 30);
             Instance = this;
             
             //TODO test code please remove
