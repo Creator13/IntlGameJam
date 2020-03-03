@@ -2,6 +2,7 @@
 using Simfluencer.Model;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Serialization;
 
 namespace Simfluencer {
     public interface IGameManager {
@@ -14,6 +15,7 @@ namespace Simfluencer {
     public class GameSettings {
         [SerializeField] internal int startFollowers = 48629;
         [SerializeField, Range(0, 1)] internal float startCredibility = .58f;
+        [SerializeField, Range(-1, 1)] internal float startPositivity = 0f;
         [SerializeField, Range(0, 1)] internal float basePostImpact = .2f;
     }
 
@@ -24,11 +26,11 @@ namespace Simfluencer {
         public GameStateManager GameStateManager { get; private set; }
         public PostPool PostPool { get; private set; }
 
-        [SerializeField] private GameSettings gameSettings;
+        [FormerlySerializedAs("gameSettings")] [SerializeField] private GameSettings settings;
 
         public GameSettings GameSettings {
-            get => gameSettings;
-            private set => gameSettings = value;
+            get => settings;
+            private set => settings = value;
         }
 
         public int CurrentRound => GameStateManager.PostHistory.Count;
@@ -37,10 +39,11 @@ namespace Simfluencer {
 
         private void Awake() {
             // SettingTools.FitTargetResolution();
-            Assert.IsNotNull(Instance);
+            Assert.IsNull(Instance);
 
-            PlayerInfo = new PlayerInfo(gameSettings.startFollowers, gameSettings.startCredibility);
-            GameStateManager = new GameStateManager(scenarios);
+            PlayerInfo = new PlayerInfo(settings.startFollowers);
+            GameStateManager =
+                new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             // PostPool = new PostPool();
 
             Instance = this;

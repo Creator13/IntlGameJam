@@ -22,16 +22,18 @@ namespace Simfluencer.Model {
 
         public float Credibility {
             get => credibility;
-            private set => credibility = Mathf.Clamp(value, -1, 1);
+            private set => credibility = Mathf.Clamp(value, 0, 1);
         }
 
-        public GameStateManager(List<Scenario> scenarios) {
+        public GameStateManager(List<Scenario> scenarios, float startCredibility, float startPositivity) {
+            Credibility = startCredibility;
+            Positivity = startPositivity;
             Scenarios = scenarios;
             
             scenarioScores = new List<float>();
             InitScenarioScores();
             
-            currentState = new FreeState();
+            currentState = new FreeState(this);
         }
 
         public void ProcessPost(Post post, Profile profile) {
