@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Simfluencer.Model;
 using UnityEngine;
 
 namespace Simfluencer.UI {
     public class PostHistoryPanel : MonoBehaviour {
         [SerializeField] private PostPanel postPrefab;
 
-        private Stack<Post> posts;
+        private Stack<ProcessedPost> posts;
 
-        public void SetPosts(Stack<Post> posts) {
-            this.posts = new Stack<Post>(posts.Reverse());
+        public void SetPosts(Stack<ProcessedPost> posts) {
+            this.posts = new Stack<ProcessedPost>(posts.Reverse());
 
             foreach (var post in this.posts) {
                 var panel = Instantiate(postPrefab, transform, false);
-                panel.Post = post;
+                panel.ProcessedPost = post;
             }
         }
 

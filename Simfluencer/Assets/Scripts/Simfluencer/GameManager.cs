@@ -1,33 +1,49 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Simfluencer.Model;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Simfluencer {
     public interface IGameManager {
         PlayerInfo PlayerInfo { get; }
-        PostHistory PostHistory { get; }
+        GameStateManager GameStateManager { get; }
+        GameSettings GameSettings { get; }
+    }
+
+    [System.Serializable]
+    public class GameSettings {
+        [SerializeField] internal int startFollowers = 48629;
+        [SerializeField, Range(0, 1)] internal float startCredibility = .58f;
+        [SerializeField, Range(0, 1)] internal float basePostImpact = .2f;
     }
 
     public class GameManager : MonoBehaviour, IGameManager {
         public static IGameManager Instance { get; private set; }
 
         public PlayerInfo PlayerInfo { get; private set; }
-        public PostHistory PostHistory { get; private set; }
+        public GameStateManager GameStateManager { get; private set; }
+        public PostPool PostPool { get; private set; }
 
-        [SerializeField] private int startFollowers = 48629;
-        [SerializeField, Range(0, 1)] private float startCredibility = .58f;
-        //TODO test code plz remove
-        [SerializeField] private Profile testProfile;
+        [SerializeField] private GameSettings gameSettings;
+
+        public GameSettings GameSettings {
+            get => gameSettings;
+            private set => gameSettings = value;
+        }
+
+        public int CurrentRound => GameStateManager.PostHistory.Count;
+
+        [SerializeField] private List<Model.Scenario> scenarios;
 
         private void Awake() {
             // SettingTools.FitTargetResolution();
-            PlayerInfo = new PlayerInfo(startFollowers, startCredibility);
-            PostHistory = new PostHistory();
+            Assert.IsNotNull(Instance);
+
+            PlayerInfo = new PlayerInfo(gameSettings.startFollowers, gameSettings.startCredibility);
+            GameStateManager = new GameStateManager(scenarios);
+            // PostPool = new PostPool();
+
             Instance = this;
-            
-            //TODO test code please remove
-            for (var i = 0; i < 15; i++) {
-                PostHistory.AddPost(new Post(testProfile, $"Lorem ipsum dolor sit amet post {i}"));
-            }
         }
 
         public void QuitGame() {

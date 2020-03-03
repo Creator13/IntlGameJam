@@ -1,4 +1,6 @@
-﻿namespace Simfluencer.UI.Screens {
+﻿using System.Linq;
+
+namespace Simfluencer.UI.Screens {
     public class FeedScreen : Screen {
         private PostHistoryPanel feed;
         
@@ -6,7 +8,9 @@
             feed = GetComponentInChildren<PostHistoryPanel>();
             
             feed.Clear();
-            feed.SetPosts(GameManager.Instance.PostHistory.Posts);
+
+            var posts = GameManager.Instance.GameStateManager.PostHistory;
+            feed.SetPosts(posts);
         }
     }
 }
