@@ -1,17 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Simfluencer.Model {
-    public delegate bool TransitionCheck();
-
     [System.Serializable]
     public class GameStateManager {
+        public event Action<GameState> StateChanged;
+        public event Action<float> CredibilityChanged;
+        public event Action<float> PositivityChanged;
+        
         public List<Scenario> Scenarios { get; private set; }
         private List<float> scenarioScores;
         private float positivity;
         private float credibility;
         private GameState currentState;
+        
+        private GameState CurrentState {
+            get => currentState;
+            set {
+                if (value == null) return;
+
+                currentState = value;
+                StateChanged?.Invoke(value);
+            }
+        }
 
         public Stack<ProcessedPost> PostHistory { get; } = new Stack<ProcessedPost>();
 
@@ -33,7 +46,7 @@ namespace Simfluencer.Model {
             scenarioScores = new List<float>();
             InitScenarioScores();
 
-            currentState = new FreeState(this);
+            CurrentState = new FreeState(this);
         }
 
         public List<Scenario> TopScenarios(int count) {
@@ -43,7 +56,11 @@ namespace Simfluencer.Model {
             return top.Select(i => Scenarios[i]).ToList();
         }
 
-        public void ProcessPost(Post post, Profile profile) {
+        public Scenario TopScenario() {
+            return TopScenarios(1)[0];
+        }
+
+        public void ProcessPost(Post post) {
             // Value changes
             Positivity += post.Positivity;
             Credibility += post.Credibility;
@@ -55,19 +72,24 @@ namespace Simfluencer.Model {
             }
 
             // Add this post to the history
-            PostHistory.Push(new ProcessedPost(post, profile));
+            PostHistory.Push(new ProcessedPost(post, GameManager.Instance.PlayerInfo.Profile));
 
             // Remove from pool
             GameManager.Instance.PostPool.Consume(post);
 
-            DoTransitionCheck();
+            DoTransitionCheck(post);
         }
 
-        private void DoTransitionCheck() {
+        private void DoTransitionCheck(Post post) {
+            // No scenario means neutral post, hence no transition will happen
+            if (post.scenario == null) return;
+            
+            CurrentState = CurrentState.CheckTransition(post);
+
             // stage 1 > 2: 3 turns highest scenarios
-            
+
             // if 3x not posted: stage 2 > 1
-            
+
             // stage 2 > 3 (lock): 2 more turns
         }
 

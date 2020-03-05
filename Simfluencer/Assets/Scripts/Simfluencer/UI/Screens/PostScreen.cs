@@ -44,7 +44,7 @@ namespace Simfluencer.UI.Screens {
                 return;
             }
 
-            GameManager.Instance.GameStateManager.ProcessPost(selectedPost, GameManager.Instance.PlayerInfo.Profile);
+            GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
             
             uiManager.TransitionToScreen("Main");
         }

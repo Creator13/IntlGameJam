@@ -54,6 +54,23 @@ namespace Simfluencer {
             Instance = this;
         }
 
+        private void LogStateChange(GameState state) {
+            string message;
+            switch (state) {
+                case ScenarioState sState:
+                    message = $"Switched to {state.GetType()}.{sState.scenario.ScenarioName}";
+                    break;
+                case ScenarioLockState slState:
+                    message = $"Switched to {state.GetType()}.{slState.scenario.ScenarioName}";
+                    break;
+                default:
+                    message = $"Switched to {state.GetType()}";
+                    break;
+            }
+            
+            Debug.Log(message);
+        }
+        
         public void QuitGame() {
             Application.Quit();
         }
