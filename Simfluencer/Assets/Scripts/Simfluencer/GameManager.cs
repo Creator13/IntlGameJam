@@ -9,6 +9,7 @@ namespace Simfluencer {
         PlayerInfo PlayerInfo { get; }
         GameStateManager GameStateManager { get; }
         GameSettings GameSettings { get; }
+        PostPool PostPool { get; }
     }
 
     [System.Serializable]
@@ -26,7 +27,7 @@ namespace Simfluencer {
         public GameStateManager GameStateManager { get; private set; }
         public PostPool PostPool { get; private set; }
 
-        [FormerlySerializedAs("gameSettings")] [SerializeField] private GameSettings settings;
+        [SerializeField] private GameSettings settings;
 
         public GameSettings GameSettings {
             get => settings;
@@ -35,16 +36,20 @@ namespace Simfluencer {
 
         public int CurrentRound => GameStateManager.PostHistory.Count;
 
-        [SerializeField] private List<Model.Scenario> scenarios;
+        [SerializeField] private List<Scenario> scenarios;
+        [SerializeField] private List<Post> neutralPosts;
 
         private void Awake() {
             // SettingTools.FitTargetResolution();
             Assert.IsNull(Instance);
 
+            // FIXME list shouldn't contain null elements in the first place
+            scenarios.RemoveAll(elem => elem == null);
+            
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager =
                 new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
-            // PostPool = new PostPool();
+            PostPool = new PostPool(GameStateManager, neutralPosts);
 
             Instance = this;
         }

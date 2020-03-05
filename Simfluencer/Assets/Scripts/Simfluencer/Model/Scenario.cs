@@ -17,7 +17,8 @@ namespace Simfluencer.Model {
         [SerializeField] private Sprite[] endBackgrounds = new Sprite[4];
 
         [SerializeField] private List<Post> posts;
-
+        public List<Post> Posts => posts;
+        
         private void Awake() {
             foreach (var post in posts) {
                 post.scenario = this;

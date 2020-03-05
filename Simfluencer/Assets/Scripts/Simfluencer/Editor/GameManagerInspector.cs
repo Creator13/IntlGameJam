@@ -9,17 +9,19 @@ namespace Simfluencer.Editor {
     [CustomEditor(typeof(GameManager))]
     public class GameManagerInspector : UnityEditor.Editor {
         public override VisualElement CreateInspectorGUI() {
-            var root = new VisualElement();
+            var root = new VisualElement() ;
 
-            root.Add(new PropertyField(serializedObject.FindProperty("gameSettings")) {style = {marginBottom = 10}});
+            root.Add(new PropertyField(serializedObject.FindProperty("settings")));
 
             root.Add(CreateScenarioList());
+            
+            root.Add(new PropertyField(serializedObject.FindProperty("neutralPosts")));
 
             return root;
         }
 
         private VisualElement CreateScenarioList() {
-            var list = new VisualElement {name = "scenarioList"};
+            var list = new Foldout() {name = "scenarioList", text = "Scenarios"};
 
             var scenariosProperty = serializedObject.FindProperty("scenarios");
             var availableScenarios = Resources.LoadAll<Model.Scenario>("Scenarios");

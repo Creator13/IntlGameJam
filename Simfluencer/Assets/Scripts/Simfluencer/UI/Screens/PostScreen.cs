@@ -1,93 +1,79 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using Simfluencer.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Simfluencer.UI.Screens {
     public class PostScreen : Screen {
-        // [SerializeField] private TextMeshProUGUI title;
-        // [SerializeField] private Button sciPos;
-        // [SerializeField] private Button sciNeg;
-        // [SerializeField] private Button consPos;
-        // [SerializeField] private Button consNeg;
-        
-        private PostCategory category;
-        
-        public string Category {
-            set => category = CategoryLoader.Instance.GetCategory(value);
+        [SerializeField] private TMP_InputField textField;
+        [SerializeField] private Transform buttonGroup;
+        [SerializeField] private PostButton buttonPrefab;
+        [SerializeField] private Button submitButton;
+
+        private List<PostButton> buttons;
+        private Post selectedPost;
+
+        private Post SelectedPost {
+            set {
+                selectedPost = value;
+                textField.text = selectedPost.Content;
+            }
         }
-        
-        // protected override void Show() {
-        //     title.text = category.Name;
-        //
-        //     sciPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[0];
-        //     sciNeg.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[1];
-        //     consPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[2];
-        //     consNeg.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[3];
-        //
-        //     sciPos.onClick.AddListener(RegisterSciPos);
-        //     sciNeg.onClick.AddListener(RegisterSciNeg);
-        //     consPos.onClick.AddListener(RegisterConsPos);
-        //     consNeg.onClick.AddListener(RegisterConsNeg);
-        // }
-        //
-        // protected override void Hide() {
-        //     sciPos.onClick.RemoveListener(RegisterSciPos);
-        //     sciNeg.onClick.RemoveListener(RegisterSciNeg);
-        //     consPos.onClick.RemoveListener(RegisterConsPos);
-        //     consNeg.onClick.RemoveListener(RegisterConsNeg);
-        // }
-        //
-        // private void DisableCategory() {
-        //     category.Used = true;
-        //     uiManager.TransitionToScreen("Main");
-        // }
-        //
-        // private void RegisterSciPos() {
-        //     // GameManager.Instance.PostHistory.AddPost(new ProcessedPost(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
-        //
-        //     var followPct = Random.Range(0.02f, 0.04f);
-        //     var credPct = Random.Range(0.15f, 0.23f);
-        //
-        //     AddFollowers(followPct);
-        //     AddCredibility(credPct);
-        //
-        //     DisableCategory();
-        // }
-        //
-        // private void RegisterSciNeg() {
-        //     // GameManager.Instance.PostHistory.AddPost(new ProcessedPost(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
-        //
-        //     var followPct = Random.Range(-.015f, .005f);
-        //     var credPct = Random.Range(0.08f, 0.18f);
-        //
-        //     AddFollowers(followPct);
-        //     AddCredibility(credPct);
-        //
-        //     DisableCategory();
-        // }
-        //
-        // private void RegisterConsPos() {
-        //     // GameManager.Instance.PostHistory.AddPost(new ProcessedPost(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
-        //
-        //     var followPct = Random.Range(0.03f, 0.05f);
-        //     var credPct = Random.Range(-.15f, -0.05f);
-        //
-        //     AddFollowers(followPct);
-        //     AddCredibility(credPct);
-        //
-        //     DisableCategory();
-        // }
-        //
-        // private void RegisterConsNeg() {
-        //     // GameManager.Instance.PostHistory.AddPost(new ProcessedPost(GameManager.Instance.PlayerInfo.Profile, category.PostOptions[0]));
-        //
-        //     var followPct = Random.Range(-.005f, 0.02f);
-        //     var credPct = Random.Range(-.23f, -.15f);
-        //
-        //     AddFollowers(followPct);
-        //     AddCredibility(credPct);
-        //
-        //     DisableCategory();
-        // }
+
+        protected override void Show() {
+            if (buttonGroup.childCount > 0) {
+                foreach (Transform child in buttonGroup) {
+                    Destroy(child.gameObject);
+                }
+            }
+
+            buttons = new List<PostButton>();
+            CreateButtons();
+            submitButton.onClick.AddListener(SubmitPost);
+        }
+
+        protected override void Hide() {
+            DestroyButtons();
+            submitButton.onClick.RemoveListener(SubmitPost);
+        }
+
+        private void SubmitPost() {
+            if (!selectedPost) {
+                // TODO give warning to user
+                return;
+            }
+
+            GameManager.Instance.GameStateManager.ProcessPost(selectedPost, GameManager.Instance.PlayerInfo.Profile);
+            
+            uiManager.TransitionToScreen("Main");
+        }
+
+        private void CreateButtons() {
+            var posts = GameManager.Instance.PostPool.GetPosts(ScenarioEnding.ConspiracyNegative);
+
+            // Instantiate the four buttons
+            for (var i = 0; i < 4; i++) {
+                var button = Instantiate(buttonPrefab, buttonGroup, false);
+                // Assign a post to each button
+                // Technically not necessary as this can also be implicitly assigned in the listener on the next line
+                button.Post = posts[i];
+
+                // Assign a listener to this button that will set this post as the selected post
+                button.ButtonComponent.onClick.AddListener(() => SelectedPost = button.Post);
+
+                buttons.Add(button);
+            }
+        }
+
+        private void DestroyButtons() {
+            if (buttons == null) return;
+
+            foreach (var button in buttons) {
+                Destroy(button.gameObject);
+            }
+
+            buttons.Clear();
+        }
     }
 }

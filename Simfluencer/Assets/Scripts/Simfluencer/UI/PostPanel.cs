@@ -14,9 +14,15 @@ namespace Simfluencer.UI {
         }
         
         private void SetPostValues(ProcessedPost processedPost) {
-            username.text = processedPost.Profile.Username;
+            var profile = processedPost.Profile;
+            if (profile == null) {
+                profile = ScriptableObject.CreateInstance<Profile>();
+                profile.Username = "<null>";
+            }
+            
+            username.text = profile.Username;
+            picture.sprite = profile.Picture;
             content.text = processedPost.Post.Content;
-            picture.sprite = processedPost.Profile.Picture;
         }
     }
 }

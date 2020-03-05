@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Simfluencer.Model {
     public delegate bool TransitionCheck();
-    
+
     [System.Serializable]
     public class GameStateManager {
         public List<Scenario> Scenarios { get; private set; }
@@ -29,11 +29,18 @@ namespace Simfluencer.Model {
             Credibility = startCredibility;
             Positivity = startPositivity;
             Scenarios = scenarios;
-            
+
             scenarioScores = new List<float>();
             InitScenarioScores();
-            
+
             currentState = new FreeState(this);
+        }
+
+        public List<Scenario> TopScenarios(int count) {
+            var top = scenarioScores.OrderBy(i => i)
+                                    .Take(count)
+                                    .Select((f, i) => i);
+            return top.Select(i => Scenarios[i]).ToList();
         }
 
         public void ProcessPost(Post post, Profile profile) {
@@ -41,23 +48,26 @@ namespace Simfluencer.Model {
             Positivity += post.Positivity;
             Credibility += post.Credibility;
 
-            IncreaseScenarioScore(post.scenario, GameManager.Instance.GameSettings.basePostImpact * post.Impact);
+            // Check if the post has an assigned scenario. If not, this means the post does not belong to any specific
+            // scenario. Hence, the post will not affect any of the scenario-specific scores.
+            if (post.scenario) {
+                IncreaseScenarioScore(post.scenario, GameManager.Instance.GameSettings.basePostImpact * post.Impact);
+            }
 
             // Add this post to the history
             PostHistory.Push(new ProcessedPost(post, profile));
-            
-            //TODO remove post from pool
+
+            // Remove from pool
+            GameManager.Instance.PostPool.Consume(post);
 
             DoTransitionCheck();
         }
 
-        private void DoTransitionCheck() {
-            
-        }
-        
+        private void DoTransitionCheck() { }
+
         private void InitScenarioScores() {
             var startScore = 1f / Scenarios.Count;
-            
+
             foreach (var _ in Scenarios) {
                 scenarioScores.Add(startScore);
             }

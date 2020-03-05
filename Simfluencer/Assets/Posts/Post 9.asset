@@ -10,7 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: tetspost
+  m_Name: Post 9
   m_EditorClassIdentifier: 
-  postContent: 
-  setting: 0
+  tagline: Bees
+  postContent: 'According to all known laws  of aviation, there is no way a bee 
+    should be able to fly. Its wings are too small to get
+
+    its fat little body
+    off the ground.'
+  impact: 1
+  positivity: 0
+  credibility: 0
