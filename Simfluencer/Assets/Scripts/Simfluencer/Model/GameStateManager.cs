@@ -63,7 +63,13 @@ namespace Simfluencer.Model {
             DoTransitionCheck();
         }
 
-        private void DoTransitionCheck() { }
+        private void DoTransitionCheck() {
+            // stage 1 > 2: 3 turns highest scenarios
+            
+            // if 3x not posted: stage 2 > 1
+            
+            // stage 2 > 3 (lock): 2 more turns
+        }
 
         private void InitScenarioScores() {
             var startScore = 1f / Scenarios.Count;

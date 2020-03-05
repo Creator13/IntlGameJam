@@ -22,9 +22,14 @@ namespace Simfluencer.Model {
         public List<Post> GetPosts(ScenarioEnding scenario) {
             var selectedPosts = new List<Post>(4);
             var neutralPosts = 2;
+            var topScenarioCount = 2;
             
             // Load the two top scenarios
-            var topScenarios = manager.TopScenarios(2);
+            var topScenarios = manager.TopScenarios(topScenarioCount);
+            if (topScenarios.Count < topScenarioCount) {
+                neutralPosts += topScenarioCount - topScenarios.Count;
+            }
+            
             foreach (var scen in topScenarios) {
                 // Load all posts registered to this scenario
                 var scenarioPostList = posts.Where(post => post.scenario == scen).ToList();
