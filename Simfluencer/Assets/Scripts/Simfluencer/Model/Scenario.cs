@@ -19,7 +19,7 @@ namespace Simfluencer.Model {
         [SerializeField] private List<Post> posts;
         public List<Post> Posts => posts;
         
-        private void Awake() {
+        public void Init() {
             foreach (var post in posts) {
                 post.scenario = this;
             }

@@ -4392,6 +4392,7 @@ MonoBehaviour:
     basePostImpact: 0.2
   scenarios:
   - {fileID: 11400000, guid: de902c4bcd2eeda4fbb1707a18837454, type: 2}
+  - {fileID: 11400000, guid: b497d2e2307594743b7ab2618154761c, type: 2}
   neutralPosts:
   - {fileID: 11400000, guid: 6acb89f5b3e5cc14fbddbf97896d9ce8, type: 2}
   - {fileID: 11400000, guid: 362485355708c724dbcd534565dd86d7, type: 2}
@@ -9819,6 +9820,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TransitionToScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8777185267235282730, guid: a42756d828625e446bf1a8e40b2bc128,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8777185267818504854, guid: a42756d828625e446bf1a8e40b2bc128,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9932,12 +9938,17 @@ PrefabInstance:
     - target: {fileID: 8777185267818504855, guid: a42756d828625e446bf1a8e40b2bc128,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8777185267960805282, guid: a42756d828625e446bf1a8e40b2bc128,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -248.29993
+      objectReference: {fileID: 0}
+    - target: {fileID: 8777185268221497049, guid: a42756d828625e446bf1a8e40b2bc128,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a42756d828625e446bf1a8e40b2bc128, type: 3}

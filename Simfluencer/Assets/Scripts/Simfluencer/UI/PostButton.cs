@@ -1,5 +1,4 @@
-﻿using System;
-using Simfluencer.Model;
+﻿using Simfluencer.Model;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

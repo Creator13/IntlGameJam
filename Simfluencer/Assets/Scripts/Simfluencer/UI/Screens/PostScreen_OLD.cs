@@ -1,7 +1,4 @@
 ﻿using System;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 
 namespace Simfluencer.UI.Screens {
     [Obsolete]

@@ -2,7 +2,6 @@
 using Simfluencer.Model;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Serialization;
 
 namespace Simfluencer {
     public interface IGameManager {
@@ -46,22 +45,26 @@ namespace Simfluencer {
             // FIXME list shouldn't contain null elements in the first place
             scenarios.RemoveAll(elem => elem == null);
             
+            scenarios.ForEach(s => s.Init());
+            
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager =
                 new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             PostPool = new PostPool(GameStateManager, neutralPosts);
 
             Instance = this;
+
+            GameStateManager.StateChanged += LogStateChange;
         }
 
         private void LogStateChange(GameState state) {
             string message;
             switch (state) {
                 case ScenarioState sState:
-                    message = $"Switched to {state.GetType()}.{sState.scenario.ScenarioName}";
+                    message = $"Switched to {state.GetType()}-{sState.scenario.ScenarioName}";
                     break;
                 case ScenarioLockState slState:
-                    message = $"Switched to {state.GetType()}.{slState.scenario.ScenarioName}";
+                    message = $"Switched to {state.GetType()}-{slState.scenario.ScenarioName}";
                     break;
                 default:
                     message = $"Switched to {state.GetType()}";

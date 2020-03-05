@@ -10,6 +10,8 @@ namespace Simfluencer.Model {
         private readonly HashSet<Post> posts = new HashSet<Post>();
         private readonly HashSet<Post> used = new HashSet<Post>();
 
+        private List<Post> next;
+
         public PostPool(GameStateManager manager, List<Post> neutralPosts) {
             this.manager = manager;
 
@@ -17,19 +19,27 @@ namespace Simfluencer.Model {
             foreach (var post in neutralPosts) {
                 posts.Add(post);
             }
+
+            // TODO generalize
+            next = GeneratePosts(ScenarioEnding.ConspiracyNegative);
         }
 
         public List<Post> GetPosts(ScenarioEnding scenario) {
+            // TODO return per scenario ending type
+            return next;
+        }
+
+        private List<Post> GeneratePosts(ScenarioEnding scenario) {
             var selectedPosts = new List<Post>(4);
             var neutralPosts = 2;
             var topScenarioCount = 2;
-            
+
             // Load the two top scenarios
             var topScenarios = manager.TopScenarios(topScenarioCount);
             if (topScenarios.Count < topScenarioCount) {
                 neutralPosts += topScenarioCount - topScenarios.Count;
             }
-            
+
             foreach (var scen in topScenarios) {
                 // Load all posts registered to this scenario
                 var scenarioPostList = posts.Where(post => post.scenario == scen).ToList();
@@ -42,27 +52,27 @@ namespace Simfluencer.Model {
                     neutralPosts++;
                 }
             }
-            
+
             // Select all neutral posts, i.e. the posts that do not belong to the top 2 scenarios
             var neutralPostList = posts.Where(post => !topScenarios.Contains(post.scenario)).ToList();
-            
+
             // If there are not enough posts to pool from, just return as many as possible
             if (neutralPosts > neutralPostList.Count) {
                 neutralPosts = neutralPostList.Count;
             }
-            
+
             // If there are no posts left to pool from, simply skip the rest and return
             if (neutralPosts == 0) {
                 return selectedPosts;
             }
-            
+
             // Generate random indexes
             var randIndexes = Random.UniqueIntegers(0, neutralPostList.Count, neutralPosts);
             // Select posts to return based on the indexes
             selectedPosts.AddRange(randIndexes.Select(i => neutralPostList[i]));
-            
+
             Assert.IsTrue(selectedPosts.Count == 4);
-            
+
             return selectedPosts;
         }
 
@@ -73,6 +83,9 @@ namespace Simfluencer.Model {
 
             posts.Remove(post);
             used.Add(post);
+
+            // TODO generalize
+            next = GeneratePosts(ScenarioEnding.ConspiracyNegative);
         }
 
         private void LoadPosts() {

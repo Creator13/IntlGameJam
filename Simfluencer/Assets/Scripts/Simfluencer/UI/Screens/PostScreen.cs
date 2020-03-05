@@ -28,6 +28,7 @@ namespace Simfluencer.UI.Screens {
                 }
             }
 
+            textField.text = string.Empty;
             buttons = new List<PostButton>();
             CreateButtons();
             submitButton.onClick.AddListener(SubmitPost);

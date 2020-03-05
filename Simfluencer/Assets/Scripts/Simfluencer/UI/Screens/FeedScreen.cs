@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Simfluencer.UI.Screens {
+﻿namespace Simfluencer.UI.Screens {
     public class FeedScreen : Screen {
         private PostHistoryPanel feed;
         
