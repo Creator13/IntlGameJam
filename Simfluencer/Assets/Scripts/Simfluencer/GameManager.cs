@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Simfluencer.Model;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -12,11 +13,22 @@ namespace Simfluencer {
     }
 
     [System.Serializable]
+    public struct ScenarioSettings {
+        [SerializeField, Range(-1, 1)] private float positivityImpact;
+        [SerializeField, Range(-.5f, .5f)] private float credibilityImpact;
+
+        public float PositivityImpact => positivityImpact;
+        public float CredibilityImpact => credibilityImpact;
+    }
+
+    [System.Serializable]
     public class GameSettings {
         [SerializeField] internal int startFollowers = 48629;
         [SerializeField, Range(0, 1)] internal float startCredibility = .58f;
         [SerializeField, Range(-1, 1)] internal float startPositivity = 0f;
         [SerializeField, Range(0, 1)] internal float basePostImpact = .2f;
+
+        [SerializeField] internal ScenarioSettings[] scenarioSettings;
     }
 
     public class GameManager : MonoBehaviour, IGameManager {
@@ -44,9 +56,13 @@ namespace Simfluencer {
 
             // FIXME list shouldn't contain null elements in the first place
             scenarios.RemoveAll(elem => elem == null);
-            
+
             scenarios.ForEach(s => s.Init());
-            
+
+            // Remove duplicates from post list (also enforced in object's inspector, but it never hurts to validate on
+            // the back-end amirite?)
+            neutralPosts = neutralPosts.Distinct().ToList();
+
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager =
                 new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
@@ -54,6 +70,7 @@ namespace Simfluencer {
 
             Instance = this;
 
+            // TODO temporary test code
             GameStateManager.StateChanged += LogStateChange;
         }
 
@@ -70,10 +87,10 @@ namespace Simfluencer {
                     message = $"Switched to {state.GetType()}";
                     break;
             }
-            
+
             Debug.Log(message);
         }
-        
+
         public void QuitGame() {
             Application.Quit();
         }

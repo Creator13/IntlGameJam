@@ -4390,18 +4390,25 @@ MonoBehaviour:
     startCredibility: 0.58
     startPositivity: 0
     basePostImpact: 0.2
+    scenarioSettings:
+    - positivityImpact: 0
+      credibilityImpact: 0
+    - positivityImpact: 0
+      credibilityImpact: 0
+    - positivityImpact: 0
+      credibilityImpact: 0
+    - positivityImpact: 0
+      credibilityImpact: 0
   scenarios:
   - {fileID: 11400000, guid: de902c4bcd2eeda4fbb1707a18837454, type: 2}
   - {fileID: 11400000, guid: b497d2e2307594743b7ab2618154761c, type: 2}
   neutralPosts:
   - {fileID: 11400000, guid: 6acb89f5b3e5cc14fbddbf97896d9ce8, type: 2}
   - {fileID: 11400000, guid: 362485355708c724dbcd534565dd86d7, type: 2}
-  - {fileID: 11400000, guid: cbdaa5f30c6b7264c9cec189e3300125, type: 2}
-  - {fileID: 11400000, guid: dbe20e23ed5099a428e4288b71d94c51, type: 2}
-  - {fileID: 11400000, guid: 8d7cf8c185e634940a5e42cf150db8e0, type: 2}
-  - {fileID: 11400000, guid: 22891e51f684e0f42a033462a8003114, type: 2}
-  - {fileID: 11400000, guid: 25e34b4dbbbd5d542925195873fee684, type: 2}
   - {fileID: 11400000, guid: a9d26142dcc3c6b4e9af4ab1772a3bde, type: 2}
+  - {fileID: 11400000, guid: 8d7cf8c185e634940a5e42cf150db8e0, type: 2}
+  - {fileID: 11400000, guid: dbe20e23ed5099a428e4288b71d94c51, type: 2}
+  - {fileID: 11400000, guid: cbdaa5f30c6b7264c9cec189e3300125, type: 2}
 --- !u!4 &761353090
 Transform:
   m_ObjectHideFlags: 0

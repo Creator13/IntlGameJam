@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagline: Bio1
   postContent: Bio1
+  setting: 0
   impact: 1
+  overrideSettings: 0
   positivity: 0.2
   credibility: 0.2

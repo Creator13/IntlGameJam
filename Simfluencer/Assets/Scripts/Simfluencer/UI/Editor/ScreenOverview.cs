@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Simfluencer.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Screen = Simfluencer.UI.Screens.Screen;
 
-namespace Simfluencer.UI.Editor {
+namespace Simfluencer.Editor {
     public class ScreenOverview : EditorWindow {
         private VisualElement screenOverviewList;
         private UIManager uiManager;
