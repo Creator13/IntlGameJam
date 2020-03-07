@@ -6,7 +6,9 @@
             feed = GetComponentInChildren<PostHistoryPanel>();
             
             feed.Clear();
-            feed.SetPosts(GameManager.Instance.PostHistory.Posts);
+
+            var posts = GameManager.Instance.GameStateManager.PostHistory;
+            feed.SetPosts(posts);
         }
     }
 }

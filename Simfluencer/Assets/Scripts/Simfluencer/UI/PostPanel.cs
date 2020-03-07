@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Simfluencer.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,20 @@ namespace Simfluencer.UI {
         [SerializeField] private TextMeshProUGUI content;
         [SerializeField] private Image picture;
         
-        public Post Post {
+        public ProcessedPost ProcessedPost {
             set => SetPostValues(value);
         }
         
-        private void SetPostValues(Post post) {
-            username.text = post.Profile.Username;
-            content.text = post.Content;
-            picture.sprite = post.Profile.Picture;
+        private void SetPostValues(ProcessedPost processedPost) {
+            var profile = processedPost.Profile;
+            if (profile == null) {
+                profile = ScriptableObject.CreateInstance<Profile>();
+                profile.Username = "<null>";
+            }
+            
+            username.text = profile.Username;
+            picture.sprite = profile.Picture;
+            content.text = processedPost.Post.Content;
         }
     }
 }

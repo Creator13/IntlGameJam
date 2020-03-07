@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 namespace Simfluencer.UI.Screens {
     [RequireComponent(typeof(RectTransform))]
     public class Screen : MonoBehaviour {
-        [SerializeField] protected UIManager uiManager;
+        protected UIManager uiManager;
         [SerializeField] private string screenName;
         public string Name => screenName;
 
@@ -21,6 +21,11 @@ namespace Simfluencer.UI.Screens {
 
                 gameObject.SetActive(value);
             }
+        }
+
+        private void Awake() {
+            uiManager = GetComponentInParent<UIManager>();
+            Assert.IsNotNull(uiManager);
         }
 
         protected virtual void Show() { }

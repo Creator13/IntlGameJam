@@ -42,7 +42,7 @@ namespace Simfluencer.UI {
             var maintype = name.Split('.')[0];
             var screen = screens.First(s => s.Name == maintype);
             
-            if (screen is PostScreen pScreen) {
+            if (screen is PostScreen_OLD pScreen) {
                 var subtype = name.Split('.')[1];
                 pScreen.Category = subtype;
                 
