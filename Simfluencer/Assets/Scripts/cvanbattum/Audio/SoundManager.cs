@@ -11,8 +11,8 @@ namespace cvanbattum.Audio {
     }
 
     public class SoundManager : MonoBehaviour, ISoundManager {
-        private static ISoundManager instance;
-        public static ISoundManager Instance => instance;
+        public static ISoundManager Instance { get; private set; }
+
         public static List<AudioClip> EffectClips => LoadEffectClips();
 
         private AudioSource musicSource;
@@ -26,8 +26,8 @@ namespace cvanbattum.Audio {
         [SerializeField] private AudioClip negMusic;
 
         private void Awake() {
-            if (instance == null) {
-                instance = this;
+            if (Instance == null) {
+                Instance = this;
             }
 
             GetComponents<AudioSource>().ToList().ForEach(Destroy);

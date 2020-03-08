@@ -64,8 +64,7 @@ namespace Simfluencer {
             neutralPosts = neutralPosts.Distinct().ToList();
 
             PlayerInfo = new PlayerInfo(settings.startFollowers);
-            GameStateManager =
-                new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
+            GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             PostPool = new PostPool(GameStateManager, neutralPosts);
 
             Instance = this;
