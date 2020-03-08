@@ -53,7 +53,7 @@ namespace cvanbattum.Audio {
             musicSource.loop = true;
 
             if (!musicSource.isPlaying) musicSource.Play();
-        }
+        }    
 
         public void SwitchNeutral() {
             musicSource.clip = music;
@@ -66,7 +66,6 @@ namespace cvanbattum.Audio {
         public void SwitchNegative() {
             musicSource.clip = negMusic;
         }
-
 
         public void StopMusic() {
             musicSource.Pause();

@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 
 namespace Simfluencer.Model {
-    [System.Serializable]
     public class GameStateManager {
         public event Action<GameState> StateChanged;
         public event Action<float> CredibilityChanged;

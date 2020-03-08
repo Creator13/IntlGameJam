@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SaveSystem;
 using Simfluencer.Model;
 using UnityEditor;
 using UnityEngine;
@@ -72,6 +73,8 @@ namespace Simfluencer {
 
             // TODO temporary test code
             GameStateManager.StateChanged += LogStateChange;
+            
+            SaveManager<SimfluencerData>.Save();
         }
 
         private void LogStateChange(GameState state) {
