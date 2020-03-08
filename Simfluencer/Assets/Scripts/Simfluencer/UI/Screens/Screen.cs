@@ -13,7 +13,6 @@ namespace Simfluencer.UI.Screens {
             set {
                 if (value) {
                     Show();
-                    // Debug.Log($"Now displaying screen {screenName}");
                 }
                 else {
                     Hide();
@@ -32,6 +31,13 @@ namespace Simfluencer.UI.Screens {
 
         protected virtual void Hide() { }
 
-        // TODO add methods for sliding
+        public virtual void GoToScreen(string name) {
+            uiManager.TransitionToScreen(name);
+        }
+
+        public void GoBack() {
+            uiManager.ReturnToLastScreen();
+        }
+        // TODO add methods for sliding 
     }
 }

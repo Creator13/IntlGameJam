@@ -7,6 +7,8 @@ namespace cvanbattum.Audio {
     public interface ISoundManager {
         void PlayMusic();
 
+        void StopMusic();
+
         void PlayEffect(string name);
     }
 

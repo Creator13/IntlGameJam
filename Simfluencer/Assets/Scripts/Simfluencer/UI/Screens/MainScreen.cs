@@ -5,5 +5,9 @@ namespace Simfluencer.UI.Screens {
         protected override void Show() {
             SoundManager.Instance.PlayMusic();
         }
+
+        protected override void Hide() {
+            SoundManager.Instance.StopMusic();
+        }
     }
 }

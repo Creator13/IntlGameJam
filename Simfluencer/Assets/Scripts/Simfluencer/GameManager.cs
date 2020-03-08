@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Simfluencer.Model;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -90,8 +91,12 @@ namespace Simfluencer {
             Debug.Log(message);
         }
 
-        public void QuitGame() {
+        public static void QuitGame() {
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
     }
 }
