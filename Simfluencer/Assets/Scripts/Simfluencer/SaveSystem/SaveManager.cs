@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SaveSystem {
     public delegate void GameLoad<in T>(T data);
 
-    public delegate void GameSave<T>(out T data);
+    public delegate void GameSave<T>(ref T data);
 
     public static class SaveManager<T> where T : new() {
         private const string Filename = "game.dat";
@@ -15,7 +15,7 @@ namespace SaveSystem {
 
         public static void Save() {
             var dataObject = new T();
-            OnGameSave?.Invoke(out dataObject);
+            OnGameSave?.Invoke(ref dataObject);
 
             var formatter = new BinaryFormatter();
             var path = Path.Combine(Application.persistentDataPath, Filename);
@@ -24,15 +24,15 @@ namespace SaveSystem {
                 formatter.Serialize(stream, dataObject);
             }
         }
-
-        public static T Load() {
+        
+        public static T Load(bool sendLoadEvent = true) {
             var formatter = new BinaryFormatter();
             var path = Path.Combine(Application.persistentDataPath, Filename);
 
             if (File.Exists(path)) {
                 using (var stream = new FileStream(path, FileMode.Open)) {
                     var dataObject = (T) formatter.Deserialize(stream);
-                    OnGameLoad?.Invoke(dataObject);
+                    if (sendLoadEvent) OnGameLoad?.Invoke(dataObject);
                     return dataObject;
                 }
             }

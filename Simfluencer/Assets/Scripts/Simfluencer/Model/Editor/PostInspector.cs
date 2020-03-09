@@ -13,6 +13,10 @@ namespace Simfluencer.Editor {
         public override VisualElement CreateInspectorGUI() {
             var root = new VisualElement();
 
+            var postField = new PropertyField(serializedObject.FindProperty("postId"));
+            postField.SetEnabled(false);
+            root.Add(postField);
+            
             root.Add(new PropertyField(serializedObject.FindProperty("tagline")));
             root.Add(new PropertyField(serializedObject.FindProperty("postContent")));
             root.Add(new PropertyField(serializedObject.FindProperty("impact")));

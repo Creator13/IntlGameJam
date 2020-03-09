@@ -2,11 +2,11 @@
 using UnityEngine;
 
 namespace Simfluencer {
+    [Serializable]
     public class PlayerInfo {
-        public event Action<int> FollowersChanged;
+        [field: NonSerialized] public event Action<int> FollowersChanged;
 
         private int followers;
-        private float credibility;
 
         public int Followers {
             get => followers;

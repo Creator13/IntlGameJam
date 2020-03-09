@@ -53,8 +53,12 @@ namespace Simfluencer {
         [SerializeField] private List<Post> neutralPosts;
 
         private void Awake() {
+            SaveManager<SimfluencerData>.OnGameSave += SaveClassData;
+            SaveManager<SimfluencerData>.OnGameLoad += LoadClassData;
+
             // SettingTools.FitTargetResolution();
             Assert.IsNull(Instance);
+            Instance = this;
 
             // FIXME list shouldn't contain null elements in the first place
             scenarios.RemoveAll(elem => elem == null);
@@ -65,16 +69,34 @@ namespace Simfluencer {
             // the back-end amirite?)
             neutralPosts = neutralPosts.Distinct().ToList();
 
-            PlayerInfo = new PlayerInfo(settings.startFollowers);
-            GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
-            PostPool = new PostPool(GameStateManager, neutralPosts);
-
-            Instance = this;
+            LoadGame();
 
             // TODO temporary test code
             GameStateManager.StateChanged += LogStateChange;
-            
-            SaveManager<SimfluencerData>.Save();
+        }
+
+        private void LoadGame() {
+            PlayerInfo = new PlayerInfo(settings.startFollowers);
+            GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
+            PostPool = new PostPool(GameStateManager, neutralPosts);
+        }
+        
+        private void OnDestroy() {
+            SaveManager<SimfluencerData>.OnGameSave -= SaveClassData;
+            SaveManager<SimfluencerData>.OnGameLoad -= LoadClassData;
+        }
+
+        private void OnDisable() {
+            SaveManager<SimfluencerData>.OnGameSave -= SaveClassData;
+            SaveManager<SimfluencerData>.OnGameLoad -= LoadClassData;
+        }
+
+        private void SaveClassData(ref SimfluencerData data) {
+            data.playerInfo = PlayerInfo;
+        }
+
+        private void LoadClassData(SimfluencerData data) {
+            PlayerInfo = data.playerInfo;
         }
 
         private void LogStateChange(GameState state) {

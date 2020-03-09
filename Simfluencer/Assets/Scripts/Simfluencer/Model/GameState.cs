@@ -1,4 +1,7 @@
-﻿namespace Simfluencer.Model {
+﻿using System;
+
+namespace Simfluencer.Model {
+    [Serializable]
     public abstract class GameState {
         protected readonly GameStateManager stateMachine;
 
@@ -9,6 +12,7 @@
         public abstract GameState CheckTransition(Post post);
     }
 
+    [Serializable]
     public class FreeState : GameState {
         private Scenario currentTop;
         private int scenarioPostCount;
@@ -35,6 +39,7 @@
         }
     }
 
+    [Serializable]
     public class ScenarioState : GameState {
         public readonly Scenario scenario;
 
@@ -80,6 +85,7 @@
         }
     }
 
+    [Serializable]
     public class ScenarioLockState : GameState {
         public readonly Scenario scenario;
 
