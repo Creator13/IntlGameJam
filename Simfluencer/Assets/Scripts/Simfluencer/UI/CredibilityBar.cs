@@ -13,12 +13,12 @@ namespace Simfluencer.UI {
             // if (GameManager.Instance != null) {
             //     GameManager.Instance.PlayerInfo.CredibilityChanged += UpdateText;
             // }
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         private void OnDisable() {
             // GameManager.Instance.PlayerInfo.CredibilityChanged -= UpdateText;
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
 
         private void UpdateText(float newValue) {

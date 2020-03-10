@@ -54,7 +54,9 @@ namespace Simfluencer.Model {
             }
 
             // Select all neutral posts, i.e. the posts that do not belong to the top 2 scenarios
-            var neutralPostList = posts.Where(post => !topScenarios.Contains(post.scenario)).ToList();
+            // var neutralPostList = posts.Where(post => !topScenarios.Contains(post.scenario)).ToList();
+            // FIXME This messes up
+            var neutralPostList = posts.ToList();
 
             // If there are not enough posts to pool from, just return as many as possible
             if (neutralPosts > neutralPostList.Count) {

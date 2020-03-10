@@ -6,7 +6,6 @@ namespace Simfluencer {
         public event Action<int> FollowersChanged;
 
         private int followers;
-        private float credibility;
 
         public int Followers {
             get => followers;

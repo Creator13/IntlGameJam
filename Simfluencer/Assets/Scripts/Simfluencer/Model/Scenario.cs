@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Simfluencer.UI;
 using UnityEngine;
 
 namespace Simfluencer.Model {
@@ -14,7 +15,8 @@ namespace Simfluencer.Model {
         [SerializeField] private string scenarioName;
         public string ScenarioName => scenarioName;
 
-        [SerializeField] private Sprite[] endBackgrounds = new Sprite[4];
+        [SerializeField] private BackgroundObject[] midwayBackgrounds = new BackgroundObject[4];
+        [SerializeField] private BackgroundObject[] endBackgrounds = new BackgroundObject[4];
 
         [SerializeField] private List<Post> posts;
         public List<Post> Posts => posts;
@@ -25,8 +27,12 @@ namespace Simfluencer.Model {
             }
         }
 
-        public Sprite GetBackground(ScenarioEnding scen) {
+        public BackgroundObject GetEndBackground(ScenarioEnding scen) {
             return endBackgrounds[(int) scen];
+        }
+        
+        public BackgroundObject GetMidwayBackground(ScenarioEnding scen) {
+            return midwayBackgrounds[(int) scen];
         }
     }
 }

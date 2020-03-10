@@ -19,11 +19,11 @@
         }
 
         public override GameState CheckTransition(Post post) {
+            currentTop = stateMachine.TopScenario();
             if (post.scenario == currentTop) {
                 scenarioPostCount++;
             }
             else {
-                currentTop = post.scenario;
                 scenarioPostCount = 1;
             }
 
@@ -35,21 +35,27 @@
         }
     }
 
-    public class ScenarioState : GameState {
+    public abstract class ScenarioBaseState : GameState {
         public readonly Scenario scenario;
 
+        protected ScenarioBaseState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine) {
+            this.scenario = scenario;
+        }
+    }
+
+    public class ScenarioState : ScenarioBaseState {
         private Scenario currentTop;
         private int scenarioPostCount;
         private int notPostedCount;
 
-        public ScenarioState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine) {
-            this.scenario = scenario;
+        public ScenarioState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine, scenario) {
             notPostedCount = 0;
             scenarioPostCount = 0;
             currentTop = null;
         }
 
         public override GameState CheckTransition(Post post) {
+            currentTop = stateMachine.TopScenario();
             // Count how many times in a row the player has posted about a different topic than the current scenario
             if (post.scenario != scenario) {
                 notPostedCount++;
@@ -80,12 +86,8 @@
         }
     }
 
-    public class ScenarioLockState : GameState {
-        public readonly Scenario scenario;
-
-        public ScenarioLockState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine) {
-            this.scenario = scenario;
-        }
+    public class ScenarioLockState : ScenarioBaseState {
+        public ScenarioLockState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine, scenario) { }
 
         public override GameState CheckTransition(Post post) {
             return null;

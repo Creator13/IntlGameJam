@@ -46,7 +46,7 @@ namespace Simfluencer.UI.Screens {
             }
 
             GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
-            
+
             uiManager.TransitionToScreen("Main");
         }
 
@@ -54,11 +54,11 @@ namespace Simfluencer.UI.Screens {
             var posts = GameManager.Instance.PostPool.GetPosts(ScenarioEnding.ConspiracyNegative);
 
             // Instantiate the four buttons
-            for (var i = 0; i < 4; i++) {
+            foreach (var t in posts) {
                 var button = Instantiate(buttonPrefab, buttonGroup, false);
                 // Assign a post to each button
                 // Technically not necessary as this can also be implicitly assigned in the listener on the next line
-                button.Post = posts[i];
+                button.Post = t;
 
                 // Assign a listener to this button that will set this post as the selected post
                 button.ButtonComponent.onClick.AddListener(() => SelectedPost = button.Post);

@@ -11,7 +11,8 @@ namespace Simfluencer.Editor {
         
             root.Add(new PropertyField(serializedObject.FindProperty("scenarioName")));
             
-            root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("endBackgrounds"), "Scenario backgrounds"));
+            root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("midwayBackgrounds"), "Scenario midway backgrounds"));
+            root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("endBackgrounds"), "Scenario ending backgrounds"));
             
             root.Add(new PostList(serializedObject.FindProperty("posts"), serializedObject));
             
