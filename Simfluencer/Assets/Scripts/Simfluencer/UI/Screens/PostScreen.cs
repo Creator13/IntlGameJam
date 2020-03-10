@@ -21,6 +21,7 @@ namespace Simfluencer.UI.Screens {
             }
         }
 
+        /// <inheritdoc />
         protected override void Show() {
             if (buttonGroup.childCount > 0) {
                 foreach (Transform child in buttonGroup) {
@@ -34,6 +35,7 @@ namespace Simfluencer.UI.Screens {
             submitButton.onClick.AddListener(SubmitPost);
         }
 
+        /// <inheritdoc />
         protected override void Hide() {
             DestroyButtons();
             submitButton.onClick.RemoveListener(SubmitPost);
@@ -47,7 +49,7 @@ namespace Simfluencer.UI.Screens {
 
             GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
 
-            uiManager.TransitionToScreen("Main");
+            GoBack();
         }
 
         private void CreateButtons() {

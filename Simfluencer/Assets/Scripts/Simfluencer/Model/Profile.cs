@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Simfluencer {
+namespace Simfluencer.Model {
     [CreateAssetMenu(fileName = "NewUserProfile", menuName = "Simfluencer/User Profile", order = 0)]
     public class Profile : ScriptableObject {
         [SerializeField] private string username;

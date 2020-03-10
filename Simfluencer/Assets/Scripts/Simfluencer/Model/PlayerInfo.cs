@@ -1,4 +1,5 @@
 ﻿using System;
+using Simfluencer.Model;
 using UnityEngine;
 
 namespace Simfluencer {

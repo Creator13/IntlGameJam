@@ -27,15 +27,28 @@ namespace Simfluencer.UI.Screens {
             Assert.IsNotNull(uiManager);
         }
 
+        /// <summary>
+        /// Called when the screen is activated.
+        /// </summary>
         protected virtual void Show() { }
 
+        /// <summary>
+        /// Called when the screen is deactivated.
+        /// </summary>
         protected virtual void Hide() { }
 
+        /// <summary>
+        /// Go to a screen. Screen is obtained through string lookup.
+        /// </summary>
+        /// <param name="name">The name of the screen to go to.</param>
         public virtual void GoToScreen(string name) {
             uiManager.TransitionToScreen(name);
         }
 
-        public void GoBack() {
+        /// <summary>
+        /// Go back to previous screen.
+        /// </summary>
+        public virtual void GoBack() {
             uiManager.ReturnToLastScreen();
         }
         // TODO add methods for sliding 
