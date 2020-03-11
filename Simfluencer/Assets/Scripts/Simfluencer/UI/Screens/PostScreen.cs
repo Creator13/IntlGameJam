@@ -48,7 +48,7 @@ namespace Simfluencer.UI.Screens {
             }
 
             GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
-
+            selectedPost = null;
             GoBack();
         }
 
