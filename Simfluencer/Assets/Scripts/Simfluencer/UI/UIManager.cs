@@ -46,6 +46,10 @@ namespace Simfluencer.UI {
             }
         }
 
+        /// <summary>
+        /// Go the screen with the provided name
+        /// </summary>
+        /// <param name="name">The name of the screen to go to</param>
         public void TransitionToScreen(string name) {
             ActiveScreen = GetScreen(name);
         }
@@ -56,15 +60,15 @@ namespace Simfluencer.UI {
             activeScreen.Active = true;
         }
 
+        public List<Screen> GetScreens() { 
+            return GetComponentsInChildren<Screen>(true).ToList();
+        }
+
         private Screen GetScreen(string name) {
             //TODO cleanup
             if (screens == null) screens = GetScreens();
             
             return screens.First(s => s.Name == name);;
-        }
-
-        public List<Screen> GetScreens() { 
-            return GetComponentsInChildren<Screen>(true).ToList();
         }
     }
 }
