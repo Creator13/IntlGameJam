@@ -14,7 +14,7 @@ namespace Simfluencer.UI.Editor {
             var screens = uiManager.GetScreens();
 
             var nextScreenProperty = serializedObject.FindProperty("nextScreen");
-            
+
             // Obtain the currently selected screen
             var selectedIndex = 0;
             var selectedScreen = nextScreenProperty.objectReferenceValue as Screen;
@@ -25,6 +25,7 @@ namespace Simfluencer.UI.Editor {
             }
             else {
                 nextScreenProperty.objectReferenceValue = screens[0];
+                nextScreenProperty.serializedObject.ApplyModifiedProperties();
             }
 
             var popup = new PopupField<Screen>("Next screen", screens, selectedIndex) {
@@ -36,6 +37,13 @@ namespace Simfluencer.UI.Editor {
                 nextScreenProperty.objectReferenceValue = evt.newValue;
                 nextScreenProperty.serializedObject.ApplyModifiedProperties();
             });
+
+            var backToggle = new Toggle("Back to previous") {bindingPath = "back"};
+            backToggle.RegisterValueChangedCallback(evt => { popup.SetEnabled(!evt.newValue); });
+
+            popup.SetEnabled(backToggle.value);
+
+            root.Add(backToggle);
             root.Add(popup);
 
             return root;

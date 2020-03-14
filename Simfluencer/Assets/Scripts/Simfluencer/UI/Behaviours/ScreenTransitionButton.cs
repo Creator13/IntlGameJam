@@ -7,12 +7,13 @@ using Screen = Simfluencer.UI.Screens.Screen;
 namespace Simfluencer.UI {
     [RequireComponent(typeof(Button))]
     public class ScreenTransitionButton : MonoBehaviour {
+        [SerializeField] private bool back;
         [SerializeField] private Screen nextScreen;
 
         private Screen parentScreen;
         private Button buttonComponent;
 
-        public Action ClickAction { private get; set; }
+        public Action ClickAction { get; set; }
 
         private void Start() {
             parentScreen = GetComponentInParent<Screen>();
@@ -26,8 +27,14 @@ namespace Simfluencer.UI {
         private void HandleClick() {
             // Perform custom action if set
             ClickAction?.Invoke();
-            // Ask the screen to transition to the next
-            parentScreen.GoToScreen(nextScreen);
+
+            // Perform transition
+            if (back) {
+                parentScreen.GoBack();
+            }
+            else {
+                parentScreen.GoToScreen(nextScreen);
+            }
         }
     }
 }
