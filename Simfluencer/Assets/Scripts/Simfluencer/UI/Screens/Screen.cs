@@ -8,6 +8,10 @@ namespace Simfluencer.UI.Screens {
         [SerializeField] private string screenName;
         public string Name => screenName;
 
+        /// <summary>
+        /// Whether this screen is currently activated.
+        /// Changing the value will invoke the show/hide method of the screen.
+        /// </summary>
         public bool Active {
             get => gameObject.activeInHierarchy;
             set {
@@ -37,12 +41,20 @@ namespace Simfluencer.UI.Screens {
         /// </summary>
         protected virtual void Hide() { }
 
+        // /// <summary>
+        // /// Go to a screen. Screen is obtained through string lookup.
+        // /// </summary>
+        // /// <param name="name">The name of the screen to go to.</param>
+        // public virtual void GoToScreen(string name) {
+        //     uiManager.TransitionToScreen(name);
+        // }
+
         /// <summary>
-        /// Go to a screen. Screen is obtained through string lookup.
+        /// Go to a screen.
         /// </summary>
-        /// <param name="name">The name of the screen to go to.</param>
-        public virtual void GoToScreen(string name) {
-            uiManager.TransitionToScreen(name);
+        /// <param name="screen">The screen to go to.</param>
+        public virtual void GoToScreen(Screen screen) {
+            uiManager.TransitionToScreen(screen);
         }
 
         /// <summary>

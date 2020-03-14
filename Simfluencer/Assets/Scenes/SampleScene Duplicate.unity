@@ -1260,6 +1260,7 @@ GameObject:
   - component: {fileID: 405881371}
   - component: {fileID: 405881370}
   - component: {fileID: 405881369}
+  - component: {fileID: 405881372}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1329,18 +1330,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 405881370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 39155833}
-        m_MethodName: TransitionToScreen
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Profile
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &405881370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,6 +1368,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405881367}
   m_CullTransparentMesh: 0
+--- !u!114 &405881372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405881367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bd323a3387448d84e5bb00e9147fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScreen: {fileID: 472779662}
 --- !u!1 &412167728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1794,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22, y: 109}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472779662
@@ -1807,9 +1810,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenName: Profile
-  nextScreen: Main
   chooser: {fileID: 910545132}
-  submit: {fileID: 665029941}
+  submit: {fileID: 665029944}
   input: {fileID: 2095810209}
 --- !u!1 &518464624
 GameObject:
@@ -2082,6 +2084,7 @@ GameObject:
   - component: {fileID: 665029943}
   - component: {fileID: 665029942}
   - component: {fileID: 665029941}
+  - component: {fileID: 665029944}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2188,6 +2191,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665029939}
   m_CullTransparentMesh: 0
+--- !u!114 &665029944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665029939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bd323a3387448d84e5bb00e9147fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScreen: {fileID: 1824212137}
 --- !u!1 &681210426
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3451,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097536362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c80033dd59c1b149a8ae2156f18988b, type: 3}
+  m_Script: {fileID: 11500000, guid: 99c457cf57c78ac409ecf61a20a09c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   postPrefab: {fileID: 6863563455740778665, guid: 824ca5ff501c5384c866d34854c82f29,
@@ -6772,6 +6788,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1824212136}
     m_Modifications:
+    - target: {fileID: 3552769761906545918, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
+        type: 3}
+      propertyPath: nextScreen
+      value: 
+      objectReference: {fileID: 232822991}
     - target: {fileID: 7510260499477195034, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
         type: 3}
       propertyPath: m_Name
@@ -6906,11 +6927,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 240.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7510260499535768950, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7510260499535768950, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
         type: 3}

@@ -12,8 +12,6 @@ namespace Simfluencer.Editor {
         private UIManager uiManager;
         private List<Screen> screens;
 
-        private bool dontReload;
-
         [MenuItem("UI/Screen overview")]
         public static ScreenOverview ShowWindow() {
             var window = GetWindow<ScreenOverview>();
@@ -69,7 +67,7 @@ namespace Simfluencer.Editor {
             return button;
         }
 
-        private static bool ScreenListsEqual(List<Screen> a, List<Screen> b) {
+        private static bool ScreenListsEqual(IReadOnlyCollection<Screen> a, IReadOnlyCollection<Screen> b) {
             if (a == null || b == null) return false;
 
             var aNames = a.Select(s => s.Name).ToList();
