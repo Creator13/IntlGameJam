@@ -28,10 +28,12 @@ namespace Simfluencer.UI.Editor {
                 nextScreenProperty.serializedObject.ApplyModifiedProperties();
             }
 
+            string StringFormatCallback(Screen screen) => screen.Name == string.Empty ? "<unnamed>" : screen.Name;
+
             var popup = new PopupField<Screen>("Next screen", screens, selectedIndex) {
                 // bindingPath = "nextScreen", 
-                formatListItemCallback = screen => screen.Name,
-                formatSelectedValueCallback = screen => screen.Name
+                formatListItemCallback = StringFormatCallback,
+                formatSelectedValueCallback = StringFormatCallback
             };
             popup.RegisterValueChangedCallback(evt => {
                 nextScreenProperty.objectReferenceValue = evt.newValue;
