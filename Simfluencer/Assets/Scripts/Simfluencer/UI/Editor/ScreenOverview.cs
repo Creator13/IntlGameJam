@@ -12,8 +12,6 @@ namespace Simfluencer.Editor {
         private UIManager uiManager;
         private List<Screen> screens;
 
-        private bool dontReload;
-
         [MenuItem("UI/Screen overview")]
         public static ScreenOverview ShowWindow() {
             var window = GetWindow<ScreenOverview>();
@@ -23,13 +21,21 @@ namespace Simfluencer.Editor {
         }
 
         private void OnEnable() {
+            var refreshButton = new Button(LoadScreens) {text = "Refresh list"};
+            refreshButton.style.marginBottom = 10;
+            rootVisualElement.Add(refreshButton);
+
             screenOverviewList = new VisualElement();
             rootVisualElement.Add(screenOverviewList);
 
             LoadScreens();
         }
 
-        private void OnHierarchyChange() {
+        private void OnProjectChange() {
+            LoadScreens();
+        }
+
+        private void OnFocus() {
             LoadScreens();
         }
 
@@ -42,12 +48,7 @@ namespace Simfluencer.Editor {
             }
 
             // Reload screens
-            var screensUpdated = uiManager.GetScreens();
-            // Only refresh the UI if the list of screens actually changed
-            if (ScreenListsEqual(screens, screensUpdated)) return;
-            
-            // Refresh the reference list if the hierarchy actually changed
-            screens = screensUpdated;
+            screens = uiManager.GetScreens();
 
             screenOverviewList.Clear();
             foreach (var screen in screens) {
@@ -56,7 +57,7 @@ namespace Simfluencer.Editor {
         }
 
         private Button CreateScreenButton(Screen screen) {
-            var button = new Button {text = screen.Name};
+            var button = new Button {text = screen.Name == string.Empty ? "<unnamed>" : screen.Name};
 
             button.clickable.clicked += () => {
                 // Don't use the Active property of the screen object for editing, because it's meant to be used in
@@ -69,7 +70,7 @@ namespace Simfluencer.Editor {
             return button;
         }
 
-        private static bool ScreenListsEqual(List<Screen> a, List<Screen> b) {
+        private static bool ScreenListsEqual(IReadOnlyCollection<Screen> a, IReadOnlyCollection<Screen> b) {
             if (a == null || b == null) return false;
 
             var aNames = a.Select(s => s.Name).ToList();
