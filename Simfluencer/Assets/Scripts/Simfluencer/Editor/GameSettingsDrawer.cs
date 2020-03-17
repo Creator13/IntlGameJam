@@ -26,6 +26,7 @@ namespace Simfluencer.Editor {
         
             root.Add(new PropertyField(property.FindPropertyRelative("positivityImpact")));
             root.Add(new PropertyField(property.FindPropertyRelative("credibilityImpact")));
+            root.Add(new PropertyField(property.FindPropertyRelative("followerChangeMultiplier")));
         
             return root;
         }

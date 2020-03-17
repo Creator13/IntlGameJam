@@ -17,9 +17,11 @@ namespace Simfluencer {
     public struct ScenarioSettings {
         [SerializeField, Range(-1, 1)] private float positivityImpact;
         [SerializeField, Range(-.5f, .5f)] private float credibilityImpact;
+        [SerializeField, Range(-1, 1)] private float followerChangeMultiplier;
 
         public float PositivityImpact => positivityImpact;
         public float CredibilityImpact => credibilityImpact;
+        public float FollowerChangeMultiplier => followerChangeMultiplier;
     }
 
     [System.Serializable]
