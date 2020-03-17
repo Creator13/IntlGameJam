@@ -29,6 +29,16 @@ namespace Simfluencer {
             }
         }
 
+        public Sprite Avatar {
+            set {
+                if (!Profile) Profile = ScriptableObject.CreateInstance<Profile>();
+
+                if (value == Profile.Picture) return;
+
+                Profile.Picture = value;
+            }
+        }
+
         public PlayerInfo(int followersStart) {
             followers = followersStart;
         }

@@ -100,7 +100,10 @@ namespace Simfluencer.Model {
             // Value changes
             Positivity += post.Positivity;
             Credibility += post.Credibility;
-            // TODO change follower count
+            // Change follower count
+            var followerChange = GameManager.Instance.GameSettings.scenarioSettings[(int) CurrentScenarioEndingPath].FollowerChangeMultiplier;
+            var newFollowerCount = Mathf.RoundToInt(GameManager.Instance.PlayerInfo.Followers * followerChange);
+            GameManager.Instance.PlayerInfo.Followers = newFollowerCount;
 
             // Check if the post has an assigned scenario. If not, this means the post does not belong to any specific
             // scenario. Hence, the post will not affect any of the scenario-specific scores.
