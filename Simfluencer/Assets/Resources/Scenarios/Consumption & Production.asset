@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Consumption & Production
   m_EditorClassIdentifier: 
   scenarioName: Mock
+  icon: {fileID: 21300000, guid: 8d9157d4558dbf74fbc999ba357d9733, type: 3}
   midwayBackgrounds:
   - {fileID: 2491651078867901827, guid: 89f7af68522602d44a217f0cff4340f8, type: 3}
   - {fileID: -7327508115012647626, guid: 070fd364e40ab834e893da76b6718a8c, type: 3}

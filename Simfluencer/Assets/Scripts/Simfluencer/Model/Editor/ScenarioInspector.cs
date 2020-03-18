@@ -10,6 +10,7 @@ namespace Simfluencer.Editor {
             var root = new VisualElement();
         
             root.Add(new PropertyField(serializedObject.FindProperty("scenarioName")));
+            root.Add(new PropertyField(serializedObject.FindProperty("icon")));
             
             root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("midwayBackgrounds"), "Scenario midway backgrounds"));
             root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("endBackgrounds"), "Scenario ending backgrounds"));

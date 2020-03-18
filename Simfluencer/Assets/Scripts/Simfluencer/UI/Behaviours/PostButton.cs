@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace Simfluencer.UI {
     [RequireComponent(typeof(Button))]
     public class PostButton : MonoBehaviour {
+        [SerializeField] private Image icon;
         private Button buttonComp;
         private TextMeshProUGUI text;
         private Post post;
@@ -15,6 +16,14 @@ namespace Simfluencer.UI {
             set {
                 post = value;
                 Text.text = post.Tagline;
+
+                if (post.scenario) {
+                    icon.enabled = true;
+                    icon.sprite = post.scenario.Icon;
+                }
+                else {
+                    icon.enabled = false;
+                }
             }
         }
 

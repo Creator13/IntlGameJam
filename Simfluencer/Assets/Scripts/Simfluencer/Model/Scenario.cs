@@ -9,18 +9,20 @@ namespace Simfluencer.Model {
         SciencePositive,
         ScienceNegative
     }
-    
+
     [CreateAssetMenu(menuName = "Simfluencer/Scenario")]
     public class Scenario : ScriptableObject {
         [SerializeField] private string scenarioName;
         public string ScenarioName => scenarioName;
+        [SerializeField] private Sprite icon;
+        public Sprite Icon => icon;
 
         [SerializeField] private BackgroundObject[] midwayBackgrounds = new BackgroundObject[4];
         [SerializeField] private BackgroundObject[] endBackgrounds = new BackgroundObject[4];
 
         [SerializeField] private List<Post> posts;
         public List<Post> Posts => posts;
-        
+
         public void Init() {
             foreach (var post in posts) {
                 post.scenario = this;
@@ -30,7 +32,7 @@ namespace Simfluencer.Model {
         public BackgroundObject GetEndBackground(ScenarioEnding scen) {
             return endBackgrounds[(int) scen];
         }
-        
+
         public BackgroundObject GetMidwayBackground(ScenarioEnding scen) {
             return midwayBackgrounds[(int) scen];
         }
