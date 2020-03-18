@@ -44,7 +44,10 @@ namespace Simfluencer.Model {
             private set {
                 positivity = Mathf.Clamp(value, -1, 1);
 
-                PositivityChanged?.Invoke(value);
+                // FIXME this if-statement is a temporary fix to postpone the switching of the positivity within a state. This is not an ideal solution at all, preferably the positivity couldn't even change at some times (let states handle value change instead).
+                if (positivity < -.5 || positivity > .5) {
+                    PositivityChanged?.Invoke(value);
+                }
             }
         }
 
