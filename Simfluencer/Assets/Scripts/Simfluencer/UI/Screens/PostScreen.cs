@@ -9,6 +9,7 @@ namespace Simfluencer.UI.Screens {
         [SerializeField] private TMP_InputField textField;
         [SerializeField] private Transform buttonGroup;
         [SerializeField] private PostButton buttonPrefab;
+
         [SerializeField] private ScreenTransitionButton submitButton;
         // [SerializeField] private Button submitButton;
 
@@ -33,22 +34,23 @@ namespace Simfluencer.UI.Screens {
             textField.text = string.Empty;
             buttons = new List<PostButton>();
             CreateButtons();
-            if (submitButton.ClickAction != SubmitPost) {
-                submitButton.ClickAction = SubmitPost;
-            }
+
+            submitButton.PreCondition = HasPost;
+            submitButton.ClickAction = SubmitPost;
         }
 
         /// <inheritdoc />
         protected override void Hide() {
+            submitButton.PreCondition = null;
+            submitButton.ClickAction = null;
             DestroyButtons();
         }
 
-        private void SubmitPost() {
-            if (!selectedPost) {
-                // TODO give warning to user to select a post
-                return;
-            }
+        private bool HasPost() {
+            return selectedPost;
+        }
 
+        private void SubmitPost() {
             GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
             selectedPost = null;
         }
