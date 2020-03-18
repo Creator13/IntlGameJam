@@ -5,17 +5,27 @@ using Simfluencer.UI;
 using UnityEngine;
 
 namespace Simfluencer.Model {
-    [Serializable]
     public class GameStateManager {
         public event Action<GameState> StateChanged;
         public event Action<float> CredibilityChanged;
         public event Action<float> PositivityChanged;
 
-        public List<Scenario> Scenarios { get; private set; }
-        private List<float> scenarioScores;
+        public List<Scenario> Scenarios { get; }
+        private readonly List<float> scenarioScores;
         private float positivity;
         private float credibility;
         private GameState currentState;
+
+        public Dictionary<Scenario, float> ScenarioScoreDict {
+            get {
+                var dict = new Dictionary<Scenario, float>();
+                for (var i = 0; i < Scenarios.Count; i++) {
+                    dict.Add(Scenarios[i], scenarioScores[i]);
+                }
+
+                return dict;
+            }
+        }
 
         private GameState CurrentState {
             get => currentState;
@@ -33,7 +43,7 @@ namespace Simfluencer.Model {
             get => positivity;
             private set {
                 positivity = Mathf.Clamp(value, -1, 1);
-                
+
                 PositivityChanged?.Invoke(value);
             }
         }
@@ -42,7 +52,7 @@ namespace Simfluencer.Model {
             get => credibility;
             private set {
                 credibility = Mathf.Clamp(value, 0, 1);
-                
+
                 CredibilityChanged?.Invoke(value);
             }
         }
@@ -86,10 +96,10 @@ namespace Simfluencer.Model {
         }
 
         public List<Scenario> TopScenarios(int count) {
-            var top = scenarioScores.OrderBy(i => i)
-                                    .Take(count)
-                                    .Select((f, i) => i);
-            return top.Select(i => Scenarios[i]).ToList();
+            var top = scenarioScores.OrderByDescending(i => i)
+                                    .Take(count);
+            var indexes = top.Select(val => scenarioScores.IndexOf(val));
+            return indexes.Select(i => Scenarios[i]).ToList();
         }
 
         public Scenario TopScenario() {

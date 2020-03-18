@@ -8,6 +8,8 @@ using UnityEngine.UIElements;
 namespace Simfluencer.Editor {
     [CustomEditor(typeof(GameManager))]
     public class GameManagerInspector : UnityEditor.Editor {
+        private VisualElement scenarioScoreView;
+
         public override VisualElement CreateInspectorGUI() {
             var root = new VisualElement();
 
@@ -17,7 +19,37 @@ namespace Simfluencer.Editor {
 
             root.Add(new PostList(serializedObject.FindProperty("neutralPosts"), serializedObject));
 
+            scenarioScoreView = new VisualElement();
+            var scoreViewFoldout = new Foldout {name = "scenarioScores", text = "Scores"};
+            scoreViewFoldout.Add(scenarioScoreView);
+            root.Add(scoreViewFoldout);
+
+            EditorApplication.update = RefreshScenarioScoreView;
+
             return root;
+        }
+
+        private void RefreshScenarioScoreView() {
+            scenarioScoreView.Clear();
+
+            if (!EditorApplication.isPlaying) {
+                scenarioScoreView.Add(new Label("Please enter play mode"));
+                return;
+            }
+            
+            var stateManager = ((GameManager) target).GameStateManager;
+            var values = stateManager.ScenarioScoreDict;
+
+            foreach (var kvp in values) {
+                var field = new FloatField(kvp.Key.ScenarioName) {value = kvp.Value};
+                field.SetEnabled(false);
+
+                if (kvp.Key == stateManager.TopScenario()) {
+                    field.style.color = Color.red;
+                }
+                
+                scenarioScoreView.Add(field);
+            }
         }
 
         private VisualElement CreateScenarioList() {

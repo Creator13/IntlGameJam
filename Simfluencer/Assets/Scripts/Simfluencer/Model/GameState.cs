@@ -87,9 +87,16 @@
     }
 
     public class ScenarioLockState : ScenarioBaseState {
+        private int postCount;
+        
         public ScenarioLockState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine, scenario) { }
 
         public override GameState CheckTransition(Post post) {
+            postCount++;
+
+            if (postCount == 3) {
+                // End game
+            }
             return null;
         }
     }
