@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: BioDiv_15_ConPos
+  m_Name: ConPro_03_ConPos
   m_EditorClassIdentifier: 
   tagline: Soy revolution
   postContent: Soy plant discovered that produces thrice as much soy beans
