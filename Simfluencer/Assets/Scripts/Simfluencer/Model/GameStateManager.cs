@@ -5,9 +5,19 @@ using Simfluencer.UI;
 using UnityEngine;
 
 namespace Simfluencer.Model {
+    public class GameStateChangeEvent {
+        public readonly GameState oldState;
+        public readonly GameState newState;
+        
+        public GameStateChangeEvent(GameState oldState, GameState newState) {
+            this.oldState = oldState;
+            this.newState = newState;
+        }
+    }
+    
     [Serializable]
     public class GameStateManager {
-        public event Action<GameState> StateChanged;
+        public event Action<GameStateChangeEvent> StateChanged;
         public event Action<float> CredibilityChanged;
         public event Action<float> PositivityChanged;
 
@@ -22,8 +32,10 @@ namespace Simfluencer.Model {
             set {
                 if (value == null) return;
 
+                var evt = new GameStateChangeEvent(currentState, value);
+                
                 currentState = value;
-                StateChanged?.Invoke(value);
+                StateChanged?.Invoke(evt);
             }
         }
 

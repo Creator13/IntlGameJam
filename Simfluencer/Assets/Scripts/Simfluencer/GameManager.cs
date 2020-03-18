@@ -13,33 +13,13 @@ namespace Simfluencer {
         PostPool PostPool { get; }
     }
 
-    [System.Serializable]
-    public struct ScenarioSettings {
-        [SerializeField, Range(-1, 1)] private float positivityImpact;
-        [SerializeField, Range(-.5f, .5f)] private float credibilityImpact;
-        [SerializeField, Range(-1, 1)] private float followerChangeMultiplier;
-
-        public float PositivityImpact => positivityImpact;
-        public float CredibilityImpact => credibilityImpact;
-        public float FollowerChangeMultiplier => followerChangeMultiplier;
-    }
-
-    [System.Serializable]
-    public class GameSettings {
-        [SerializeField] internal int startFollowers = 48629;
-        [SerializeField, Range(0, 1)] internal float startCredibility = .58f;
-        [SerializeField, Range(-1, 1)] internal float startPositivity = 0f;
-        [SerializeField, Range(0, 1)] internal float basePostImpact = .2f;
-
-        [SerializeField] internal ScenarioSettings[] scenarioSettings;
-    }
-
     public class GameManager : MonoBehaviour, IGameManager {
         public static IGameManager Instance { get; private set; }
 
         public PlayerInfo PlayerInfo { get; private set; }
         public GameStateManager GameStateManager { get; private set; }
         public PostPool PostPool { get; private set; }
+        private PostAI PostAI { get; set; }
 
         [SerializeField] private GameSettings settings;
 
@@ -69,6 +49,7 @@ namespace Simfluencer {
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             PostPool = new PostPool(GameStateManager, neutralPosts);
+            PostAI = new PostAI(GameStateManager, settings.postReplyTransitions);
 
             Instance = this;
 
@@ -76,17 +57,17 @@ namespace Simfluencer {
             GameStateManager.StateChanged += LogStateChange;
         }
 
-        private void LogStateChange(GameState state) {
+        private void LogStateChange(GameStateChangeEvent evt) {
             string message;
-            switch (state) {
+            switch (evt.newState) {
                 case ScenarioState sState:
-                    message = $"Switched to {state.GetType()}-{sState.scenario.ScenarioName}";
+                    message = $"Switched to {evt.newState.GetType()}-{sState.scenario.ScenarioName}";
                     break;
                 case ScenarioLockState slState:
-                    message = $"Switched to {state.GetType()}-{slState.scenario.ScenarioName}";
+                    message = $"Switched to {evt.newState.GetType()}-{slState.scenario.ScenarioName}";
                     break;
                 default:
-                    message = $"Switched to {state.GetType()}";
+                    message = $"Switched to {evt.newState.GetType()}";
                     break;
             }
 

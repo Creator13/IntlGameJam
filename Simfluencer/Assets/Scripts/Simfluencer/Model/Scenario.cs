@@ -17,7 +17,7 @@ namespace Simfluencer.Model {
 
         [SerializeField] private BackgroundObject[] midwayBackgrounds = new BackgroundObject[4];
         [SerializeField] private BackgroundObject[] endBackgrounds = new BackgroundObject[4];
-
+        
         [SerializeField] private List<Post> posts;
         public List<Post> Posts => posts;
         
