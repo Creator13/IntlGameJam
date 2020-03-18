@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Post4
+  m_Name: BioDiv_21_ConNeg
   m_EditorClassIdentifier: 
-  tagline: post4
-  postContent: post4
-  setting: 0
+  tagline: Purple panda hoax
+  postContent: New purple panda discovered turns out to be a hoax
+  setting: 1
   impact: 1
   overrideSettings: 0
   positivity: 0

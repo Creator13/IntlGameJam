@@ -13,16 +13,38 @@ MonoBehaviour:
   m_Name: Mock
   m_EditorClassIdentifier: 
   scenarioName: Mock
+  midwayBackgrounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   endBackgrounds:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   posts:
-  - {fileID: 11400000, guid: 6d0e6da37ff547345b259adad8e90cd1, type: 2}
-  - {fileID: 11400000, guid: 47500969a3e38dc4b95e2360d945e212, type: 2}
-  - {fileID: 11400000, guid: 5b5231ef664251849a74a0dd22a267e7, type: 2}
-  - {fileID: 11400000, guid: f59da950254900645ba9b850c52ff70a, type: 2}
-  - {fileID: 11400000, guid: a471a362e9989db4fbb7d2ce3fa5c16c, type: 2}
-  - {fileID: 11400000, guid: 7c82399886ec512458c81b9748e583cc, type: 2}
-  - {fileID: 11400000, guid: f6605fa99fb860e458ad9a334e1c4ce0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
