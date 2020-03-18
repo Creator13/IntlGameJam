@@ -12,17 +12,17 @@ namespace Simfluencer.UI {
         private Screen activeScreen;
         private readonly Stack<Screen> screenHistory = new Stack<Screen>();
 
-#if UNITY_EDITOR
         private void Awake() {
             // Load screens only once on game startup
             screens = GetScreens();
 
+#if UNITY_EDITOR
             // Check for duplicate screens in children
             foreach (var screen in screens.Where(screen => screens.Count(s => s.name == screen.name) > 1)) {
                 Debug.LogError($"Screen \"{screen.name}\" has more than one occurrences in the UIManager");
             }
-        }
 #endif
+        }
 
         private void Start() {
             // Deactivate all active screens at start of game

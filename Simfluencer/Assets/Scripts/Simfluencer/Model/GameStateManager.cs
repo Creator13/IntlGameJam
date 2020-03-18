@@ -102,7 +102,7 @@ namespace Simfluencer.Model {
             Credibility += post.Credibility;
             // Change follower count
             var followerChange = GameManager.Instance.GameSettings.scenarioSettings[(int) CurrentScenarioEndingPath].FollowerChangeMultiplier;
-            var newFollowerCount = Mathf.RoundToInt(GameManager.Instance.PlayerInfo.Followers * followerChange);
+            var newFollowerCount = Mathf.RoundToInt(GameManager.Instance.PlayerInfo.Followers * (1 + followerChange));
             GameManager.Instance.PlayerInfo.Followers = newFollowerCount;
 
             // Check if the post has an assigned scenario. If not, this means the post does not belong to any specific
