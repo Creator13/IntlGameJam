@@ -3098,7 +3098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   back: 1
-  nextScreen: {fileID: 1409288445}
+  nextScreen: {fileID: 0}
 --- !u!1001 &1045437029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3110,7 +3110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nextScreen
       value: 
-      objectReference: {fileID: 1409288445}
+      objectReference: {fileID: 0}
     - target: {fileID: 7510260499477195034, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
         type: 3}
       propertyPath: m_Name
@@ -4401,7 +4401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1409288443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a180bd892af4837a651d775d37c4509, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ea84349f5bf47f8b18864d0ea85a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   screenName: Start

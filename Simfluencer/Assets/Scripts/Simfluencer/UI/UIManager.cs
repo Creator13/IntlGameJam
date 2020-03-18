@@ -37,10 +37,12 @@ namespace Simfluencer.UI {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (screenHistory.Count == 0) {
                     // TODO give warning prompt
+#if !UNITY_WEBGL
                     GameManager.QuitGame();
+#endif
                 }
                 else {
-                    ReturnToLastScreen();
+                    activeScreen.GoBack();
                 }
             }
         }
