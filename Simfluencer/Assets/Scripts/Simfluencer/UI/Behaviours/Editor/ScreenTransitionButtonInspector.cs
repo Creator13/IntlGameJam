@@ -43,7 +43,7 @@ namespace Simfluencer.UI.Editor {
             var backToggle = new Toggle("Back to previous") {bindingPath = "back"};
             backToggle.RegisterValueChangedCallback(evt => { popup.SetEnabled(!evt.newValue); });
 
-            popup.SetEnabled(backToggle.value);
+            popup.SetEnabled(!serializedObject.FindProperty("back").boolValue);
 
             root.Add(backToggle);
             root.Add(popup);

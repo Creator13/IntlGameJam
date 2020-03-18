@@ -13,6 +13,7 @@ namespace Simfluencer.UI {
         private Screen parentScreen;
         private Button buttonComponent;
 
+        public Func<bool> PreCondition { get; set; }
         public Action ClickAction { get; set; }
 
         private void Start() {
@@ -21,10 +22,12 @@ namespace Simfluencer.UI {
             // No assertion for button component is needed as this is already enforced through RequireComponent
             buttonComponent = GetComponent<Button>();
 
-            buttonComponent.onClick.AddListener(HandleClick);
+            buttonComponent.onClick.AddListener(DoClick);
         }
 
-        private void HandleClick() {
+        public void DoClick() {
+            if (PreCondition != null && !PreCondition.Invoke()) return;
+
             // Perform custom action if set
             ClickAction?.Invoke();
 

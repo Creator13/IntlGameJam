@@ -813,6 +813,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113106129}
   m_CullTransparentMesh: 0
+--- !u!1 &123932375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7510260501154981133, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
+    type: 3}
+  m_PrefabInstance: {fileID: 1045437029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &123932380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123932375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bd323a3387448d84e5bb00e9147fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: 1
+  nextScreen: {fileID: 1409288445}
 --- !u!1 &232822989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,7 +3130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nextScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1409288445}
     - target: {fileID: 7510260499477195034, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
         type: 3}
       propertyPath: m_Name
@@ -3323,10 +3343,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510260501154981135, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510260501154981135, guid: 0b77137ed8cb8b643b8eecbb5eab2484,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 232822991}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3552769761906545918, guid: 0b77137ed8cb8b643b8eecbb5eab2484, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b77137ed8cb8b643b8eecbb5eab2484, type: 3}
 --- !u!224 &1045437030 stripped
 RectTransform:
@@ -7345,18 +7371,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8777185267517915276}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1824212137}
-        m_MethodName: GoBack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Main
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &8777185267517915279
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7397,6 +7412,7 @@ GameObject:
   - component: {fileID: 8777185267517915279}
   - component: {fileID: 8777185267517915276}
   - component: {fileID: 8777185267517915277}
+  - component: {fileID: 8777185267517915284}
   m_Layer: 5
   m_Name: Back button
   m_TagString: Untagged
@@ -7404,6 +7420,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8777185267517915284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8777185267517915283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bd323a3387448d84e5bb00e9147fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  back: 1
+  nextScreen: {fileID: 1409288445}
 --- !u!114 &8777185268135817260
 MonoBehaviour:
   m_ObjectHideFlags: 0

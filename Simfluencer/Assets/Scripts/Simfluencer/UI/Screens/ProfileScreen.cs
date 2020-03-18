@@ -1,7 +1,5 @@
-﻿using Simfluencer.Model;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Simfluencer.UI.Screens {
     public class ProfileScreen : Screen {
@@ -9,15 +7,29 @@ namespace Simfluencer.UI.Screens {
         [SerializeField] private ScreenTransitionButton submit;
         [SerializeField] private TMP_InputField input;
         
-
         protected override void Show() {
-            //TODO check for existing profile
+            if (GameManager.Instance.PlayerInfo.Profile != null) {
+                submit.DoClick();
+                return;
+            }
 
-            submit.ClickAction = () => {
-                if (input.text != string.Empty) {
-                    SetProfile();
-                }
-            };
+            submit.PreCondition = HasText;
+            submit.ClickAction = ClickAction;
+        }
+
+        protected override void Hide() {
+            submit.PreCondition = null;
+            submit.ClickAction = null;
+        }
+
+        private bool HasText() {
+            return input.text != string.Empty;
+        }
+
+        private void ClickAction() {
+            if (HasText()) {
+                SetProfile();
+            }
         }
 
         private void SetProfile() {

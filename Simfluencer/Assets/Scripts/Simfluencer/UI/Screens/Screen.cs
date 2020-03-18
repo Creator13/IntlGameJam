@@ -15,14 +15,14 @@ namespace Simfluencer.UI.Screens {
         public bool Active {
             get => gameObject.activeInHierarchy;
             set {
+                gameObject.SetActive(value);
+                
                 if (value) {
                     Show();
                 }
                 else {
                     Hide();
                 }
-
-                gameObject.SetActive(value);
             }
         }
 
@@ -63,6 +63,7 @@ namespace Simfluencer.UI.Screens {
         public virtual void GoBack() {
             uiManager.ReturnToLastScreen();
         }
+
         // TODO add methods for sliding 
     }
 }

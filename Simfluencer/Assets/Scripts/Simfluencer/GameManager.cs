@@ -96,6 +96,7 @@ namespace Simfluencer {
         public static void QuitGame() {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
 #else
             Application.Quit();
 #endif
