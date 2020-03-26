@@ -99,10 +99,8 @@ namespace Simfluencer.Model {
         }
 
         public List<Scenario> TopScenarios(int count) {
-            var top = scenarioScores.OrderByDescending(i => i)
-                                    .Take(count);
-            var indexes = top.Select(val => scenarioScores.IndexOf(val));
-            return indexes.Select(i => Scenarios[i]).ToList();
+            var top = ScenarioScoreDict.OrderByDescending(kvp => kvp.Value).Take(count);
+            return top.Select(val => val.Key).ToList();
         }
 
         public Scenario TopScenario() {

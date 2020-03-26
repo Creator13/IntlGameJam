@@ -18,6 +18,7 @@ namespace Simfluencer.Model {
 
         public string Tagline => tagline;
         public string Content => postContent;
+        public ScenarioEnding Type => setting;
         public float Impact => impact;
 
         public float Positivity {
