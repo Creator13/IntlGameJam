@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagline: New plant species
   postContent: 110 new plant species were discovered in 2019
-  setting: 2
+  setting: 3
   impact: 1
   overrideSettings: 0
   positivity: 0

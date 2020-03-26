@@ -2,16 +2,14 @@
 using Simfluencer.Model;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Simfluencer.UI.Screens {
     public class PostScreen : Screen {
         [SerializeField] private TMP_InputField textField;
         [SerializeField] private Transform buttonGroup;
         [SerializeField] private PostButton buttonPrefab;
-
         [SerializeField] private ScreenTransitionButton submitButton;
-        // [SerializeField] private Button submitButton;
+        [SerializeField] private TabGroup tabGroup;
 
         private List<PostButton> buttons;
         private Post selectedPost;
@@ -33,16 +31,19 @@ namespace Simfluencer.UI.Screens {
 
             textField.text = string.Empty;
             buttons = new List<PostButton>();
-            CreateButtons();
+            CreateButtons((ScenarioEnding) tabGroup.SelectedTab.Value);
 
             submitButton.PreCondition = HasPost;
             submitButton.ClickAction = SubmitPost;
+            tabGroup.TabChanged += OnTabSwitch;
         }
 
         /// <inheritdoc />
         protected override void Hide() {
+            selectedPost = null;
             submitButton.PreCondition = null;
             submitButton.ClickAction = null;
+            tabGroup.TabChanged -= OnTabSwitch;
             DestroyButtons();
         }
 
@@ -55,8 +56,8 @@ namespace Simfluencer.UI.Screens {
             selectedPost = null;
         }
 
-        private void CreateButtons() {
-            var posts = GameManager.Instance.PostPool.GetPosts(ScenarioEnding.ConspiracyNegative);
+        private void CreateButtons(ScenarioEnding ending) {
+            var posts = GameManager.Instance.PostPool.GetPosts(ending);
 
             // Instantiate the four buttons
             foreach (var t in posts) {
@@ -80,6 +81,11 @@ namespace Simfluencer.UI.Screens {
             }
 
             buttons.Clear();
+        }
+
+        private void OnTabSwitch(object val) {
+            DestroyButtons();
+            CreateButtons((ScenarioEnding) (int) val);
         }
     }
 }

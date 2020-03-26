@@ -11,6 +11,7 @@ namespace Simfluencer.Model {
         private readonly HashSet<Post> used = new HashSet<Post>();
 
         private List<Post> next;
+        private Dictionary<ScenarioEnding, List<Post>> nextPosts;
 
         public PostPool(GameStateManager manager, List<Post> neutralPosts) {
             this.manager = manager;
@@ -20,19 +21,28 @@ namespace Simfluencer.Model {
                 posts.Add(post);
             }
 
-            // TODO generalize
-            next = GeneratePosts(ScenarioEnding.ConspiracyNegative);
+            GenerateAllPosts();
         }
 
         public List<Post> GetPosts(ScenarioEnding scenario) {
-            // TODO return per scenario ending type
-            return next;
+            return nextPosts[scenario];
         }
 
-        private List<Post> GeneratePosts(ScenarioEnding scenario) {
+        private void GenerateAllPosts() {
+            nextPosts = new Dictionary<ScenarioEnding, List<Post>> {
+                {ScenarioEnding.ConspiracyNegative, GeneratePosts(ScenarioEnding.ConspiracyNegative)},
+                {ScenarioEnding.ConspiracyPositive, GeneratePosts(ScenarioEnding.ConspiracyPositive)},
+                {ScenarioEnding.ScienceNegative, GeneratePosts(ScenarioEnding.ScienceNegative)},
+                {ScenarioEnding.SciencePositive, GeneratePosts(ScenarioEnding.SciencePositive)}
+            };
+        }
+
+        private List<Post> GeneratePosts(ScenarioEnding type) {
             var selectedPosts = new List<Post>(4);
             var neutralPosts = 2;
             var topScenarioCount = 2;
+
+            var typePosts = posts.Where(post => post.Type == type).ToList();
 
             // Load the two top scenarios
             var topScenarios = manager.TopScenarios(topScenarioCount);
@@ -40,11 +50,11 @@ namespace Simfluencer.Model {
                 neutralPosts += topScenarioCount - topScenarios.Count;
             }
 
-            foreach (var scen in topScenarios) {
+            foreach (var scenario in topScenarios) {
                 // Load all posts registered to this scenario
-                var scenarioPostList = posts.Where(post => post.scenario == scen).ToList();
+                var scenarioPostList = typePosts.Where(post => post.scenario == scenario).ToList();
                 // If there are any, select one random one to return
-                if (scenarioPostList.Any()) {
+                if (scenarioPostList.Count > 0) {
                     selectedPosts.Add(scenarioPostList[UnityEngine.Random.Range(0, scenarioPostList.Count - 1)]);
                 }
                 // If there are none, tell to load one extra post from neutral
@@ -55,8 +65,8 @@ namespace Simfluencer.Model {
 
             // Select all neutral posts, i.e. the posts that do not belong to the top 2 scenarios
             // var neutralPostList = posts.Where(post => !topScenarios.Contains(post.scenario)).ToList();
-            // FIXME This messes up
-            var neutralPostList = posts.ToList();
+            // FIXME This messes up (might be fixed 2020-03-26)
+            var neutralPostList = typePosts.Where(post => !selectedPosts.Contains(post)).ToList();
 
             // If there are not enough posts to pool from, just return as many as possible
             if (neutralPosts > neutralPostList.Count) {
@@ -86,8 +96,7 @@ namespace Simfluencer.Model {
             posts.Remove(post);
             used.Add(post);
 
-            // TODO generalize
-            next = GeneratePosts(ScenarioEnding.ConspiracyNegative);
+            GenerateAllPosts();
         }
 
         private void LoadPosts() {

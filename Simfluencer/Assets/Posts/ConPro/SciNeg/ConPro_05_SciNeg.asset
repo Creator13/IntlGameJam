@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagline: Australian bushfires slug
   postContent: The pink slug has survived the Australian bushfires
-  setting: 2
+  setting: 3
   impact: 1
   overrideSettings: 0
   positivity: 0

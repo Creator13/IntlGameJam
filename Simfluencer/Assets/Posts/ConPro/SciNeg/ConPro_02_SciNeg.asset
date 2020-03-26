@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagline: Length of days changes
   postContent: Ancient shell shows days were half-hour shorter 70 million years ago
-  setting: 2
+  setting: 3
   impact: 1
   overrideSettings: 0
   positivity: 0
