@@ -54,7 +54,7 @@ namespace Simfluencer.Model {
                 // Load all posts registered to this scenario
                 var scenarioPostList = typePosts.Where(post => post.scenario == scenario).ToList();
                 // If there are any, select one random one to return
-                if (scenarioPostList.Any()) {
+                if (scenarioPostList.Count > 0) {
                     selectedPosts.Add(scenarioPostList[UnityEngine.Random.Range(0, scenarioPostList.Count - 1)]);
                 }
                 // If there are none, tell to load one extra post from neutral

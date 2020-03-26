@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Simfluencer.Editor {
     [CustomEditor(typeof(Post))]
+    [CanEditMultipleObjects]
     public class PostInspector : UnityEditor.Editor {
         private PropertyField scenarioSettingField;
         private Toggle overrideToggle;
