@@ -5,8 +5,18 @@ namespace Simfluencer.UI.Screens {
     [RequireComponent(typeof(RectTransform))]
     public class Screen : MonoBehaviour {
         protected UIManager uiManager;
+        
         [SerializeField] private string screenName;
+        [SerializeField] private bool showTutorial = true;
         public string Name => screenName;
+
+        private bool visited;
+        public bool IsFirstVisit => !visited;
+
+        private TutorialController tutorial;
+        private TutorialController Tutorial => tutorial ? tutorial : tutorial = GetComponentInChildren<TutorialController>(true);
+
+        public bool HasActiveTutorial => Tutorial && Tutorial.IsRunning;
 
         /// <summary>
         /// Whether this screen is currently activated.
@@ -16,12 +26,14 @@ namespace Simfluencer.UI.Screens {
             get => gameObject.activeInHierarchy;
             set {
                 gameObject.SetActive(value);
-                
+
                 if (value) {
+                    if (Tutorial && showTutorial) Tutorial.gameObject.SetActive(IsFirstVisit && !Tutorial.Completed);
                     Show();
                 }
                 else {
                     Hide();
+                    if (!visited) visited = true;
                 }
             }
         }

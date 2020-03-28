@@ -26,15 +26,15 @@ namespace Simfluencer.UI {
 
         private void Start() {
             // Deactivate all active screens at start of game
-            screens.ForEach(s => {
-                if (s.Active) s.Active = false;
-            });
+            screens.ForEach(s => { s.gameObject.SetActive(false); });
 
             TransitionToScreen(startScreenName);
         }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (activeScreen.HasActiveTutorial) return;
+
                 if (screenHistory.Count == 0) {
                     // TODO give warning prompt
                     GameManager.QuitGame();
