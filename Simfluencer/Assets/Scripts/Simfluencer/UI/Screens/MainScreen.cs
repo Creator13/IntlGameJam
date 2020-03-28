@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Simfluencer.UI.Screens {
     public class MainScreen : Screen {
         [SerializeField] private PostHistoryPanel feed;
+        
         protected override void Show() {
             SoundManager.Instance.PlayMusic();
 

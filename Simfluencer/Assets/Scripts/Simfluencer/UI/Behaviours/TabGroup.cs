@@ -13,7 +13,7 @@ namespace Simfluencer.UI {
 
         public Tab SelectedTab {
             get => selectedTab;
-            set {
+            private set {
                 if (selectedTab) selectedTab.IsSelected = false;
                 selectedTab = value;
                 selectedTab.IsSelected = true;
@@ -28,7 +28,7 @@ namespace Simfluencer.UI {
             }
         }
 
-        private void Start() {
+        private void OnEnable() {
             SelectedTab = tabs[0];
         }
 

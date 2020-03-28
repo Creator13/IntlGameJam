@@ -6,8 +6,12 @@ namespace Simfluencer.UI.Screens {
         [SerializeField] private ProfilePictureChooser chooser;
         [SerializeField] private ScreenTransitionButton submit;
         [SerializeField] private TMP_InputField input;
-        
+
         protected override void Show() {
+#if UNITY_ANDROID
+            TouchScreenKeyboard.hideInput = true;
+#endif
+
             if (GameManager.Instance.PlayerInfo.Profile != null) {
                 submit.DoClick();
                 return;

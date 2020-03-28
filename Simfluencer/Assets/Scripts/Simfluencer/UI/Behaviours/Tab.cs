@@ -10,19 +10,24 @@ namespace Simfluencer.UI {
         [SerializeField] private int value;
         public object Value => value;
 
+        private Image imageComponent;
         private Button button;
-        private Sprite originalSprite; 
+        private Sprite originalSprite;
+
+        private Image ImageComponent => imageComponent ? imageComponent : imageComponent = GetComponent<Image>();
 
         public bool IsSelected {
             set {
-                GetComponent<Image>().sprite = value ? button.spriteState.selectedSprite : originalSprite;
+                if (!isActiveAndEnabled) return;
+                
+                ImageComponent.sprite = value ? button.spriteState.selectedSprite : originalSprite;
                 button.enabled = !value;
             }
         }
 
         private void Awake() {
             button = GetComponent<Button>();
-            originalSprite = GetComponent<Image>().sprite;
+            originalSprite = ImageComponent.sprite;
 
             button.onClick.AddListener(OnClick);
         }
