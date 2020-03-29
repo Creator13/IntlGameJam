@@ -35,13 +35,7 @@ namespace Simfluencer.UI {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 if (activeScreen.HasActiveTutorial) return;
 
-                if (screenHistory.Count == 0) {
-                    // TODO give warning prompt
-                    GameManager.QuitGame();
-                }
-                else {
-                    activeScreen.GoBack();
-                }
+                ReturnToLastScreen();
             }
         }
 
@@ -69,10 +63,16 @@ namespace Simfluencer.UI {
         }
 
         /// <summary>
-        /// Activates the previously visited screen.
+        /// Activates the previously visited screen or quits the game if there are no more active screens.
         /// </summary>
         public void ReturnToLastScreen() {
-            SetActiveScreen(screenHistory.Pop(), false);
+            if (screenHistory.Count == 0) {
+                // TODO give warning prompt
+                GameManager.QuitGame();
+            }
+            else {
+                SetActiveScreen(screenHistory.Pop(), false);
+            }
         }
 
         /// <summary>
