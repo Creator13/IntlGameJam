@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_01_SciPos
   m_EditorClassIdentifier: 
-  tagline: Stop chinese dog eating
-  postContent: Shenzhen could be first city in China to ban eating of dogs and cats
+  tagline: Green energy cheaper
+  postContent: Wind and solar plants will soon be cheaper than coal in all big markets
+    around world, analysis finds
   setting: 2
   impact: 1
   overrideSettings: 0

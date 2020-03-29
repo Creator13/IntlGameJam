@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: BioDiv_14_ConPos
   m_EditorClassIdentifier: 
-  tagline: New panda discoverd
+  tagline: New panda discovered
   postContent: New panda species discovered, panda has purple hue fur and yellow
     eyes
   setting: 0

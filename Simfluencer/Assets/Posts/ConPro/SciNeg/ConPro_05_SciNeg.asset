@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_05_SciNeg
   m_EditorClassIdentifier: 
-  tagline: Australian bushfires slug
-  postContent: The pink slug has survived the Australian bushfires
+  tagline: Food waste in UK
+  postContent: UK households waste 4.5m tonnes of food each year
   setting: 3
   impact: 1
   overrideSettings: 0

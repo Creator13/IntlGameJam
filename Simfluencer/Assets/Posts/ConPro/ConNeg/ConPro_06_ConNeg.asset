@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_06_ConNeg
   m_EditorClassIdentifier: 
-  tagline: Giraffes tip over
-  postContent: Giraffe necks have gone too far. Their balance is lost, giraffes fall
-    over
+  tagline: Deforestation
+  postContent: Amazon needs to make place for new battery factories as the demand
+    for electric cars rises
   setting: 1
   impact: 1
   overrideSettings: 0

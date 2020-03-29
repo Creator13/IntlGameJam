@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_04_ConNeg
   m_EditorClassIdentifier: 
-  tagline: Oldest tree dead
-  postContent: World's oldest tree has died. Our planet is slowely dying due to drought
+  tagline: Radioactive air filter
+  postContent: Green factory filter proven to be radioactive. All vegetables must
+    be destroyed
   setting: 1
   impact: 1
   overrideSettings: 0

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_05_SciPos
   m_EditorClassIdentifier: 
-  tagline: Australian bushfires slug
-  postContent: The pink slug has survived the Australian bushfires
+  tagline: Halt trading wildlife
+  postContent: Billion-dollar wildlife industry in Vietnam under assault as law drafted
+    to halt trading
   setting: 2
   impact: 1
   overrideSettings: 0

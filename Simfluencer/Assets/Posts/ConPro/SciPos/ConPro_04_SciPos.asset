@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_04_SciPos
   m_EditorClassIdentifier: 
-  tagline: New plant species
-  postContent: 110 new plant species were discovered in 2019
+  tagline: Car-free district
+  postContent: Forward-thinking Utrecht builds car-free district for 12,000 people
   setting: 2
   impact: 1
   overrideSettings: 0
