@@ -27,6 +27,15 @@ MonoBehaviour:
   - {fileID: 2659198713640052186, guid: 17b0fb4ee4b489a439610620d3383e99, type: 3}
   - {fileID: 4348972546293699331, guid: de9e5ece7b6af6e4fb2a29eaa3bd22f5, type: 3}
   - {fileID: 1440489884808947962, guid: 8ec576a4eb17faa498e7b6118debc889, type: 3}
+  endingMessages:
+  - People grew convinced that planting plants everywhere was the solution to the
+    biodiversity crisis. The world is now overrun with plants...
+  - You didn't do enough to convince people that the biodiversity crisis needed solving.
+    The world is slowly dying...
+  - Enough people started to understand the negative effects of the biodiversity
+    crisis. We built new infrastructure to combat the problem.
+  - Not enough people were convinced that the biodiverstity crisis was a real problem.
+    We were forced to live off manufactured oxygen...
   posts:
   - {fileID: 11400000, guid: 4c31c6a64d0e6314092e247f48af23df, type: 2}
   - {fileID: 11400000, guid: 75acbde283e35c3449b1890d3baaf9de, type: 2}

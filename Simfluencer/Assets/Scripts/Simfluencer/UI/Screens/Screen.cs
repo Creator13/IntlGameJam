@@ -38,7 +38,7 @@ namespace Simfluencer.UI.Screens {
             }
         }
 
-        private void Awake() {
+        protected virtual void Awake() {
             uiManager = GetComponentInParent<UIManager>();
             Assert.IsNotNull(uiManager);
         }

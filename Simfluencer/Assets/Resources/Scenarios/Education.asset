@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
   m_Name: Education
   m_EditorClassIdentifier: 
-  scenarioName: 
-  icon: {fileID: 0}
+  scenarioName: Education
+  icon: {fileID: 21300000, guid: 420049d5087c916409ad57ba258acee4, type: 3}
   neutralMusic: {fileID: 0}
   negativeMusic: {fileID: 0}
   positiveMusic: {fileID: 0}
@@ -27,6 +27,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  endingMessages:
+  - 
+  - 
+  - 
+  - 
   posts:
   - {fileID: 11400000, guid: 81cd2340ced7446a6b03300439933ffb, type: 2}
   - {fileID: 11400000, guid: e378aeb2f765b41b88c7e0ab05f6e3c5, type: 2}

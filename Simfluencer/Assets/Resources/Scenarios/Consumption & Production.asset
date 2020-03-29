@@ -13,16 +13,29 @@ MonoBehaviour:
   m_Name: Consumption & Production
   m_EditorClassIdentifier: 
   scenarioName: Consumption & Production
+  icon: {fileID: 21300000, guid: 8d9157d4558dbf74fbc999ba357d9733, type: 3}
+  neutralMusic: {fileID: 0}
+  negativeMusic: {fileID: 0}
+  positiveMusic: {fileID: 0}
   midwayBackgrounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2491651078867901827, guid: 89f7af68522602d44a217f0cff4340f8, type: 3}
+  - {fileID: -7327508115012647626, guid: 070fd364e40ab834e893da76b6718a8c, type: 3}
+  - {fileID: 5152231774480295907, guid: 7a6f5c4217fe3b444984acdbe121dcae, type: 3}
+  - {fileID: 2061765447819884561, guid: db3103f47be17ba40bcf708e9005f5ab, type: 3}
   endBackgrounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5390372717654714802, guid: 86f4e4958602ab743bd039e582b15bd4, type: 3}
+  - {fileID: 4544202504910764354, guid: 8d20df14ad8ee794c89adb50cff42775, type: 3}
+  - {fileID: 186454418934236540, guid: 6ede23a93ce90584a939b5b01f718a4e, type: 3}
+  - {fileID: 7081340941952840274, guid: 61242190047621d48a0da71365ff015d, type: 3}
+  endingMessages:
+  - In order to get rid of all the trash caused by overproduction, people have just
+    started burning it. The world is on fire...
+  - Because of the spread of fake news, people didn't believe in the problem of overproduction.
+    They kept building more and more factories, until the work was grey and uninhabitable.
+  - People started to understand that to counter the ever-growing global consumption,
+    they could recycle their items. Big recycling centers now stand on the horizon.
+  - People grew convinced that there was no way too curb the ever-growing human consumption.
+    The world became one big trash heap.
   posts:
   - {fileID: 11400000, guid: 7d5ca0b4db45f4933adb88a8dfdec4c3, type: 2}
   - {fileID: 11400000, guid: edc5a1f3a3e30465e883ce67f593926c, type: 2}

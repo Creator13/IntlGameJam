@@ -83,6 +83,10 @@ namespace Simfluencer.UI {
             return GetComponentsInChildren<Screen>(true).ToList();
         }
 
+        public void ClearHistory() {
+            screenHistory.Clear();
+        }
+
         private void SetActiveScreen(Screen screen, bool saveToHistory = true) {
             if (activeScreen != null) {
                 if (saveToHistory) screenHistory.Push(activeScreen);

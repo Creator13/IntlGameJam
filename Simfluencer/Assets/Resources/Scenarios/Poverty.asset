@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
   m_Name: Poverty
   m_EditorClassIdentifier: 
-  scenarioName: 
-  icon: {fileID: 0}
+  scenarioName: Poverty
+  icon: {fileID: 21300000, guid: 997115b9a72ed92438d29e9529d32c67, type: 3}
   neutralMusic: {fileID: 0}
   negativeMusic: {fileID: 0}
   positiveMusic: {fileID: 0}
@@ -27,6 +27,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  endingMessages:
+  - 
+  - 
+  - 
+  - 
   posts:
   - {fileID: 11400000, guid: b1abea974771d433799e72c53ee402d4, type: 2}
   - {fileID: 11400000, guid: 8bb140a98d6494f8dbebd803f0e976ce, type: 2}

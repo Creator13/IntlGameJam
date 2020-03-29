@@ -14,6 +14,8 @@ namespace Simfluencer.Editor {
             
             root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("midwayBackgrounds"), "Scenario midway backgrounds"));
             root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("endBackgrounds"), "Scenario ending backgrounds"));
+
+            root.Add(UITools.CreateScenarioEndingList(serializedObject.FindProperty("endingMessages"), "Ending messages", true));
             
             var audioFoldout = new Foldout {text = "Music"};
             audioFoldout.Add(new PropertyField(serializedObject.FindProperty("neutralMusic")));

@@ -27,9 +27,9 @@ namespace Simfluencer.Model {
             }
         }
 
-        private GameState CurrentState {
+        public GameState CurrentState {
             get => currentState;
-            set {
+            private set {
                 if (value == null) return;
 
                 currentState = value;

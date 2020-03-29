@@ -46,17 +46,21 @@ namespace Simfluencer {
             // the back-end amirite?)
             neutralPosts = neutralPosts.Distinct().ToList();
 
+            CreateNewGame();
+
+            Instance = this;
+        }
+
+        public void CreateNewGame() {
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             PostPool = new PostPool(GameStateManager, neutralPosts);
             Audio = new AudioController(GameStateManager);
 
-            Instance = this;
-
             // TODO temporary test code
             GameStateManager.StateChanged += LogStateChange;
         }
-
+        
         private void LogStateChange(GameState state) {
             string message;
             switch (state) {
@@ -82,6 +86,10 @@ namespace Simfluencer {
 #else
             Application.Quit();
 #endif
+        }
+
+        public void Quit() {
+            QuitGame();
         }
     }
 }

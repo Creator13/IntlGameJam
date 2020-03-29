@@ -27,6 +27,8 @@ namespace Simfluencer.Model {
         [SerializeField] private BackgroundObject[] midwayBackgrounds = new BackgroundObject[4];
         [SerializeField] private BackgroundObject[] endBackgrounds = new BackgroundObject[4];
 
+        [SerializeField, TextArea] private string[] endingMessages;
+
         [SerializeField] private List<Post> posts;
         public List<Post> Posts => posts;
 
@@ -36,12 +38,16 @@ namespace Simfluencer.Model {
             }
         }
 
-        public BackgroundObject GetEndBackground(ScenarioEnding scen) {
-            return endBackgrounds[(int) scen];
+        public BackgroundObject GetMidwayBackground(ScenarioEnding ending) {
+            return midwayBackgrounds[(int) ending];
         }
 
-        public BackgroundObject GetMidwayBackground(ScenarioEnding scen) {
-            return midwayBackgrounds[(int) scen];
+        public BackgroundObject GetEndBackground(ScenarioEnding ending) {
+            return endBackgrounds[(int) ending];
+        }
+
+        public string GetEndingMessage(ScenarioEnding ending) {
+            return endingMessages[(int) ending];
         }
     }
 }

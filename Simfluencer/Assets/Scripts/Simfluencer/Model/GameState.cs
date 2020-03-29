@@ -1,4 +1,6 @@
-﻿namespace Simfluencer.Model {
+﻿using JetBrains.Annotations;
+
+namespace Simfluencer.Model {
     public abstract class GameState {
         protected readonly GameStateManager stateMachine;
 
@@ -87,16 +89,22 @@
     }
 
     public class ScenarioLockState : ScenarioBaseState {
-        private int postCount;
-        
         public ScenarioLockState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine, scenario) { }
 
         public override GameState CheckTransition(Post post) {
-            postCount++;
-
-            if (postCount == 3) {
-                // End game
+            // Go to ending when player posts about the topic once more
+            if (post.scenario == scenario) {
+                return new EndState(stateMachine);
             }
+            
+            return null;
+        }
+    }
+
+    public class EndState : GameState {
+        public EndState(GameStateManager stateMachine) : base(stateMachine) { }
+
+        public override GameState CheckTransition(Post post) {
             return null;
         }
     }

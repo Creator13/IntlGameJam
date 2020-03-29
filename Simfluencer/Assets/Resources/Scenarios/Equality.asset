@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
   m_Name: Equality
   m_EditorClassIdentifier: 
-  scenarioName: 
-  icon: {fileID: 0}
+  scenarioName: Equality
+  icon: {fileID: 21300000, guid: 3ace9e12272aec842ac412cee70d8063, type: 3}
   neutralMusic: {fileID: 0}
   negativeMusic: {fileID: 0}
   positiveMusic: {fileID: 0}
@@ -27,6 +27,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  endingMessages:
+  - 
+  - 
+  - 
+  - 
   posts:
   - {fileID: 11400000, guid: 9493cfb105d344e0994f346be0486d11, type: 2}
   - {fileID: 11400000, guid: 7743ec45078e640edb3ab413bd674e86, type: 2}
