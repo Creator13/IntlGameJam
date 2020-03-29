@@ -34,7 +34,9 @@ namespace Simfluencer {
         }
 
         private void Awake() {
+#if !UNITY_ANDROID
             SettingTools.FitTargetResolution();
+#endif
             Assert.IsNull(Instance);
 
             // FIXME list shouldn't contain null elements in the first place
@@ -60,7 +62,7 @@ namespace Simfluencer {
             // TODO temporary test code
             GameStateManager.StateChanged += LogStateChange;
         }
-        
+
         private void LogStateChange(GameState state) {
             string message;
             switch (state) {

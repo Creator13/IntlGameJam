@@ -29,6 +29,7 @@ namespace Simfluencer.UI {
         }
 
         private void OnEnable() {
+            tabs.ForEach(tab => tab.IsSelected = false);
             SelectedTab = tabs[0];
         }
 
