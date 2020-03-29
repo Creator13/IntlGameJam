@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_04_ConPos
   m_EditorClassIdentifier: 
-  tagline: America plants trees
-  postContent: President of USA acknowledges climate change, promises to plant 1
-    million trees by 2025
+  tagline: Sugar cane coffee
+  postContent: Coffee cups made from sugar cane are actually biodegradable
   setting: 0
   impact: 1
   overrideSettings: 0

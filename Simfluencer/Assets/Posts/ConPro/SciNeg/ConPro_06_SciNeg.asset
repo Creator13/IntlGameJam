@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_06_SciNeg
   m_EditorClassIdentifier: 
-  tagline: Hope for Brazil
-  postContent: Birth of wild tapir offers hope for Brazil's endangered ecosystem
+  tagline: Global banks failing
+  postContent: 'Study: global banks ''failing miserably'' on climate crisis by funneling
+    trillions into fossil fuels'
   setting: 3
   impact: 1
   overrideSettings: 0

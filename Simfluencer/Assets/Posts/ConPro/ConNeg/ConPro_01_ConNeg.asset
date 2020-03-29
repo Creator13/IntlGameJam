@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_01_ConNeg
   m_EditorClassIdentifier: 
-  tagline: Australian becomes desert
-  postContent: Australian bushfires have caused too much damage. Australia will become
-    partly desert
+  tagline: Increased production
+  postContent: China sees opportunity and increased production by 40%
   setting: 1
   impact: 1
   overrideSettings: 0

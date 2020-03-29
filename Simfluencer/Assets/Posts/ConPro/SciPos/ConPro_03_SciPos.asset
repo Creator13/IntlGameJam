@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_03_SciPos
   m_EditorClassIdentifier: 
-  tagline: Notre Dame's bees
-  postContent: "The Notre Dame\u2019s bees are thriving following last year\u2019s
-    blaze"
+  tagline: Green advertisement
+  postContent: The guardian will no longer accept advertising from oil and gas companies
   setting: 2
   impact: 1
   overrideSettings: 0

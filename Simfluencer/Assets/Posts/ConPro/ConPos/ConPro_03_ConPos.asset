@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_03_ConPos
   m_EditorClassIdentifier: 
-  tagline: Soy revolution
-  postContent: Soy plant discovered that produces thrice as much soy beans
+  tagline: Environmental fashion
+  postContent: Large fashion brand introduces environmental friendly shoe collection
   setting: 0
   impact: 1
   overrideSettings: 0

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_05_ConPos
   m_EditorClassIdentifier: 
-  tagline: Plastic eating bacteria
-  postContent: Recently found plastic-eating bacteria have already cleared two thirds
-    of all plastic in landfills
+  tagline: Factory air filter
+  postContent: China introduces filter for poluting factories. Emmisions cut in half
   setting: 0
   impact: 1
   overrideSettings: 0

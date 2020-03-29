@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
   m_Name: ConPro_01_ConPos
   m_EditorClassIdentifier: 
-  tagline: Australian forests thriving
-  postContent: Australian forests thriving after the bushfire season
+  tagline: Plastic cutlery alternative
+  postContent: Used plastic cutlery alternative made from bamboo will feed pandas
+    in brand new environmentally conscious zoo
   setting: 0
   impact: 1
   overrideSettings: 0
