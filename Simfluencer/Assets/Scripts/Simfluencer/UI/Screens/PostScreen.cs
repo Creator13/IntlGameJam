@@ -1,93 +1,91 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using Simfluencer.Model;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Simfluencer.UI.Screens {
     public class PostScreen : Screen {
-        [SerializeField] private TextMeshProUGUI title;
-        [SerializeField] private Button sciPos;
-        [SerializeField] private Button sciNeg;
-        [SerializeField] private Button consPos;
-        [SerializeField] private Button consNeg;
+        [SerializeField] private TMP_InputField textField;
+        [SerializeField] private Transform buttonGroup;
+        [SerializeField] private PostButton buttonPrefab;
+        [SerializeField] private ScreenTransitionButton submitButton;
+        [SerializeField] private TabGroup tabGroup;
 
-        private PostCategory category;
+        private List<PostButton> buttons;
+        private Post selectedPost;
 
-        public string Category {
-            set => category = CategoryLoader.Instance.GetCategory(value);
+        private Post SelectedPost {
+            set {
+                selectedPost = value;
+                textField.text = selectedPost.Content;
+            }
         }
 
+        /// <inheritdoc />
         protected override void Show() {
-            sciPos.onClick.RemoveListener(RegisterSciPos);
-            sciNeg.onClick.RemoveListener(RegisterSciNeg);
-            consPos.onClick.RemoveListener(RegisterConsPos);
-            consNeg.onClick.RemoveListener(RegisterConsNeg);
-            
-            title.text = category.Name;
+            if (buttonGroup.childCount > 0) {
+                foreach (Transform child in buttonGroup) {
+                    Destroy(child.gameObject);
+                }
+            }
 
-            sciPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[0];
-            sciNeg.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[1];
-            consPos.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[2];
-            consNeg.GetComponentInChildren<TextMeshProUGUI>().text = category.PostOptions[3];
+            textField.text = string.Empty;
+            buttons = new List<PostButton>();
+            CreateButtons((ScenarioEnding) tabGroup.SelectedTab.Value);
 
-            sciPos.onClick.AddListener(RegisterSciPos);
-            sciNeg.onClick.AddListener(RegisterSciNeg);
-            consPos.onClick.AddListener(RegisterConsPos);
-            consNeg.onClick.AddListener(RegisterConsNeg);
+            submitButton.PreCondition = HasPost;
+            submitButton.ClickAction = SubmitPost;
+            tabGroup.TabChanged += OnTabSwitch;
         }
 
-        private void DisableCategory() {
-            category.Used = true;
-            uiManager.TransitionToScreen("Main");
+        /// <inheritdoc />
+        protected override void Hide() {
+            selectedPost = null;
+            submitButton.PreCondition = null;
+            submitButton.ClickAction = null;
+            tabGroup.TabChanged -= OnTabSwitch;
+            DestroyButtons();
         }
 
-        private void RegisterSciPos() {
-            var followPct = Random.Range(0.02f, 0.04f);
-            var credPct = Random.Range(0.15f, 0.23f);
-
-            AddFollowers(followPct);
-            AddCredibility(credPct);
-
-            DisableCategory();
+        private bool HasPost() {
+            return selectedPost;
         }
 
-        private void RegisterSciNeg() {
-            var followPct = Random.Range(-.015f, .005f);
-            var credPct = Random.Range(0.08f, 0.18f);
-
-            AddFollowers(followPct);
-            AddCredibility(credPct);
-
-            DisableCategory();
+        private void SubmitPost() {
+            GameManager.Instance.GameStateManager.ProcessPost(selectedPost);
+            selectedPost = null;
         }
 
-        private void RegisterConsPos() {
-            var followPct = Random.Range(0.03f, 0.05f);
-            var credPct = Random.Range(-.15f, -0.05f);
+        private void CreateButtons(ScenarioEnding ending) {
+            var posts = GameManager.Instance.PostPool.GetPosts(ending);
 
-            AddFollowers(followPct);
-            AddCredibility(credPct);
+            // Instantiate the four buttons
+            foreach (var t in posts) {
+                var button = Instantiate(buttonPrefab, buttonGroup, false);
+                // Assign a post to each button
+                // Technically not necessary as this can also be implicitly assigned in the listener on the next line
+                button.Post = t;
 
-            DisableCategory();
+                // Assign a listener to this button that will set this post as the selected post
+                button.ButtonComponent.onClick.AddListener(() => SelectedPost = button.Post);
+
+                buttons.Add(button);
+            }
         }
 
-        private void RegisterConsNeg() {
-            var followPct = Random.Range(-.005f, 0.02f);
-            var credPct = Random.Range(-.23f, -.15f);
+        private void DestroyButtons() {
+            if (buttons == null) return;
 
-            AddFollowers(followPct);
-            AddCredibility(credPct);
+            foreach (var button in buttons) {
+                Destroy(button.gameObject);
+            }
 
-            DisableCategory();
+            buttons.Clear();
         }
 
-        private static void AddCredibility(float pct) {
-            Debug.Log(pct);
-            GameManager.Instance.PlayerInfo.Credibility += pct;
-        }
-
-        private static void AddFollowers(float pct) {
-            GameManager.Instance.PlayerInfo.Followers +=
-                Mathf.RoundToInt(GameManager.Instance.PlayerInfo.Followers * pct);
+        private void OnTabSwitch(object val) {
+            DestroyButtons();
+            CreateButtons((ScenarioEnding) (int) val);
         }
     }
 }

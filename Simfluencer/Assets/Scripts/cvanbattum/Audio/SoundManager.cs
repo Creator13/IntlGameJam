@@ -5,15 +5,19 @@ using UnityEngine;
 
 namespace cvanbattum.Audio {
     public interface ISoundManager {
+        AudioClip Music { get; set; }
+        AudioClip OverrideMusic { get; set; }
+
         void PlayMusic();
 
+        void StopMusic();
+
         void PlayEffect(string name);
-        // List<string> GetEffectsList();
     }
 
     public class SoundManager : MonoBehaviour, ISoundManager {
-        private static ISoundManager instance;
-        public static ISoundManager Instance => instance;
+        public static ISoundManager Instance { get; private set; }
+
         public static List<AudioClip> EffectClips => LoadEffectClips();
 
         private AudioSource musicSource;
@@ -21,18 +25,30 @@ namespace cvanbattum.Audio {
 
         [SerializeField] private bool enableMusic = true;
         [SerializeField] private bool enableFx = true;
-        
+
         [SerializeField] private AudioClip music;
-        [SerializeField] private AudioClip posMusic;
-        [SerializeField] private AudioClip negMusic;
+        public AudioClip Music {
+            get => music;
+            set => music = value;
+        }
+
+        private AudioClip overrideMusic;
+        public AudioClip OverrideMusic {
+            get => overrideMusic;
+            set {
+                overrideMusic = value;
+                
+                var time = musicSource.time;
+                musicSource.clip = overrideMusic ? overrideMusic : music;
+                musicSource.time = time;
+            }
+        }
 
         private void Awake() {
-            if (instance == null) {
-                instance = this;
-            }
+            Instance = this;
 
             GetComponents<AudioSource>().ToList().ForEach(Destroy);
-            
+
             musicSource = gameObject.AddComponent<AudioSource>();
             musicSource.playOnAwake = false;
             musicSource.enabled = enableMusic;
@@ -48,32 +64,22 @@ namespace cvanbattum.Audio {
         }
 
         public void PlayMusic() {
-            if (!musicSource.clip) SwitchNeutral();
+            if (!musicSource.clip) {
+                musicSource.clip = overrideMusic ? overrideMusic : music;
+            }
             musicSource.loop = true;
 
             if (!musicSource.isPlaying) musicSource.Play();
         }
-
-        public void SwitchNeutral() {
-            musicSource.clip = music;
-        }
-
-        public void SwitchPositive() {
-            musicSource.clip = posMusic;
-        }
-
-        public void SwitchNegative() {
-            musicSource.clip = negMusic;
-        }
-
 
         public void StopMusic() {
             musicSource.Pause();
         }
 
         public void PlayEffect(string name) {
-            Debug.Log($"playing {name}");
-            fxSource.PlayOneShot(EffectClips.Find(clip => clip.name == name));
+            if (enableMusic) {
+                fxSource.PlayOneShot(EffectClips.Find(clip => clip.name == name));
+            }
         }
 
         private static List<AudioClip> LoadEffectClips() {

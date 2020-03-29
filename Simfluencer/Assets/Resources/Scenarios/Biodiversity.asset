@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
+  m_Name: Biodiversity
+  m_EditorClassIdentifier: 
+  scenarioName: Biodiversity
+  icon: {fileID: 21300000, guid: d95fdb07ebba62442a7a1a307162299e, type: 3}
+  neutralMusic: {fileID: 8300000, guid: 281def3bdbc29514aa525be70e3c904d, type: 3}
+  negativeMusic: {fileID: 8300000, guid: 7804cc2de08c3204cbc66ffa590d497b, type: 3}
+  positiveMusic: {fileID: 8300000, guid: 28bcc46d1322467488e1d59b8e5b8c26, type: 3}
+  midwayBackgrounds:
+  - {fileID: 7620169998970201191, guid: 2efce9c036e3bc44ea84ab16414438a8, type: 3}
+  - {fileID: 3595750215654513442, guid: 53c310efdba23de488d5b681e228fa1a, type: 3}
+  - {fileID: 2616410098216825774, guid: a380bdd61c67fc14cb97c9262ee53885, type: 3}
+  - {fileID: 1471739366406794436, guid: cf70bc705f4944a4fbc9a4a656a6117a, type: 3}
+  endBackgrounds:
+  - {fileID: 6724259337164694415, guid: b14bbb3a3ac67e84ca4dc5ecb0eb5162, type: 3}
+  - {fileID: 2659198713640052186, guid: 17b0fb4ee4b489a439610620d3383e99, type: 3}
+  - {fileID: 4348972546293699331, guid: de9e5ece7b6af6e4fb2a29eaa3bd22f5, type: 3}
+  - {fileID: 1440489884808947962, guid: 8ec576a4eb17faa498e7b6118debc889, type: 3}
+  endingMessages:
+  - People grew convinced that planting plants everywhere was the solution to the
+    biodiversity crisis. The world is now overrun with plants...
+  - You didn't do enough to convince people that the biodiversity crisis needed solving.
+    The world is slowly dying...
+  - Enough people started to understand the negative effects of the biodiversity
+    crisis. We built new infrastructure to combat the problem.
+  - Not enough people were convinced that the biodiverstity crisis was a real problem.
+    We were forced to live off manufactured oxygen...
+  posts:
+  - {fileID: 11400000, guid: 4c31c6a64d0e6314092e247f48af23df, type: 2}
+  - {fileID: 11400000, guid: 75acbde283e35c3449b1890d3baaf9de, type: 2}
+  - {fileID: 11400000, guid: f806f347d4b1c4c4cbe1800ec19a6236, type: 2}
+  - {fileID: 11400000, guid: 6d375dfc8585b9345ba7b20744b5d42b, type: 2}
+  - {fileID: 11400000, guid: 1bc9d672342713847825ea655fffcca9, type: 2}
+  - {fileID: 11400000, guid: c31784dd73fafce4487c78c348e7bbac, type: 2}
+  - {fileID: 11400000, guid: 9f6339017628040d3903ffb2b0f5a377, type: 2}
+  - {fileID: 11400000, guid: dcea1ac3e3b514d89ba98b7e2ba7b433, type: 2}
+  - {fileID: 11400000, guid: 1c700a89fa4424182b6dddd94d6ef274, type: 2}
+  - {fileID: 11400000, guid: 23e117d425b9449fb9b502407083f519, type: 2}
+  - {fileID: 11400000, guid: 3f38d012e7a174984b72260bda68a7c2, type: 2}
+  - {fileID: 11400000, guid: f9c4436322084483fad0d03508f0ba40, type: 2}
+  - {fileID: 11400000, guid: 473931894571644b99f6cb853a9411e4, type: 2}
+  - {fileID: 11400000, guid: 6c1f2ce281ea84544be23667425a3446, type: 2}
+  - {fileID: 11400000, guid: b9d12ce77833b4060965339223ffe7f6, type: 2}
+  - {fileID: 11400000, guid: a922c1ad434b143c793037e96bd2ac51, type: 2}
+  - {fileID: 11400000, guid: 6acfd0e76e765489e9d293bfebc979cc, type: 2}
+  - {fileID: 11400000, guid: cc6a7cfffb9b647bcbd1cf1f20b44bc7, type: 2}
+  - {fileID: 11400000, guid: 98878679ee4eb4e4b8b50968e94ea757, type: 2}
+  - {fileID: 11400000, guid: e08ee91205806490ea48222072caaf1b, type: 2}
+  - {fileID: 11400000, guid: fb9b018c9795340c5bd5f17b44f29cf2, type: 2}
+  - {fileID: 11400000, guid: f8f3017c4d973412aba14c76ee8edb51, type: 2}
+  - {fileID: 11400000, guid: d8298d1ff250f4aa2ab8ada342255a8d, type: 2}
+  - {fileID: 11400000, guid: 32e3aeef069964f56a871d66a48ee282, type: 2}

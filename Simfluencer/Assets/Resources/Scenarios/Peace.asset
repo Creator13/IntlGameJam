@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
+  m_Name: Peace
+  m_EditorClassIdentifier: 
+  scenarioName: Peace, Justice & Governance
+  icon: {fileID: 21300000, guid: b8317d70756cca945bbc5e76897a5ce2, type: 3}
+  neutralMusic: {fileID: 0}
+  negativeMusic: {fileID: 0}
+  positiveMusic: {fileID: 0}
+  midwayBackgrounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  endBackgrounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  endingMessages:
+  - 
+  - 
+  - 
+  - 
+  posts:
+  - {fileID: 11400000, guid: 7e4a8c1365de3479baad68a57973411c, type: 2}
+  - {fileID: 11400000, guid: c2bb40c8cae8f4c52852fafaea7631d9, type: 2}
+  - {fileID: 11400000, guid: 16980d137b23f40788e0e4012df1be1a, type: 2}
+  - {fileID: 11400000, guid: bb5b4eb4d255c4b0587b646a07c59353, type: 2}
+  - {fileID: 11400000, guid: ad704fa78185f41db968bfe3f42520ca, type: 2}
+  - {fileID: 11400000, guid: 546cc2dfca2ec4caab8bd06685c39329, type: 2}
+  - {fileID: 11400000, guid: fce994eef66ea40428b08fe92c852ae6, type: 2}
+  - {fileID: 11400000, guid: d51175c89a19f4aa19b024309c27bcd8, type: 2}
+  - {fileID: 11400000, guid: 496fb8d069e5b400c9169b0d748943e5, type: 2}
+  - {fileID: 11400000, guid: eacf9fae28ef94624917b74fd52404d9, type: 2}
+  - {fileID: 11400000, guid: f8721df6679b645f3a973c99b86cf99b, type: 2}
+  - {fileID: 11400000, guid: c14006d0ccf6d463b812f0f4d21f5cd8, type: 2}
+  - {fileID: 11400000, guid: 912fb7fd0f80040a39721571f355d8fd, type: 2}
+  - {fileID: 11400000, guid: d36fc98f41a8f4b228a9fe5cbcde81b7, type: 2}
+  - {fileID: 11400000, guid: f68db31e20588423387c8dbef752a8bb, type: 2}
+  - {fileID: 11400000, guid: 535e60be0c11547f9bb3333d849b53ec, type: 2}
+  - {fileID: 11400000, guid: 85791ea3e7eef4dcb9323ea3f8ff3c26, type: 2}
+  - {fileID: 11400000, guid: 43f7fe563332b4d83b4c343d72611878, type: 2}
+  - {fileID: 11400000, guid: bae962af1c39b443ab271ee932c88b62, type: 2}
+  - {fileID: 11400000, guid: f02cd241de0ad44ada210489ce1b42ca, type: 2}
+  - {fileID: 11400000, guid: 08a2f0fc894284a738e698a5f2fd7396, type: 2}
+  - {fileID: 11400000, guid: 9b31ee906027045d2af834cde276b91d, type: 2}
+  - {fileID: 11400000, guid: 3a67c2d15e52943aba9416c10dbf2c6c, type: 2}
+  - {fileID: 11400000, guid: 727fdb16c6e9442d891e14d6ca0a051e, type: 2}

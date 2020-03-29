@@ -1,17 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Simfluencer.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Screen = Simfluencer.UI.Screens.Screen;
 
-namespace Simfluencer.UI.Editor {
+namespace Simfluencer.Editor {
     public class ScreenOverview : EditorWindow {
         private VisualElement screenOverviewList;
         private UIManager uiManager;
         private List<Screen> screens;
-
-        private bool dontReload;
 
         [MenuItem("UI/Screen overview")]
         public static ScreenOverview ShowWindow() {
@@ -22,21 +21,23 @@ namespace Simfluencer.UI.Editor {
         }
 
         private void OnEnable() {
+            var refreshButton = new Button(LoadScreens) {text = "Refresh list"};
+            refreshButton.style.marginBottom = 10;
+            rootVisualElement.Add(refreshButton);
+
             screenOverviewList = new VisualElement();
             rootVisualElement.Add(screenOverviewList);
 
             LoadScreens();
         }
 
-        private void OnHierarchyChange() {
-            Debug.Log("Fire");
+        private void OnProjectChange() {
             LoadScreens();
         }
-        
-        // private void OnInspectorUpdate() {
-        //     Debug.Log("fire");
-        //     LoadScreens();
-        // }
+
+        private void OnFocus() {
+            LoadScreens();
+        }
 
         private void LoadScreens() {
             if (!uiManager) uiManager = FindObjectOfType<UIManager>();
@@ -47,12 +48,7 @@ namespace Simfluencer.UI.Editor {
             }
 
             // Reload screens
-            var screensUpdated = uiManager.GetScreens();
-            // Only refresh the UI if the list of screens actually changed
-            if (ScreenListsEqual(screens, screensUpdated)) return;
-            
-            // Refresh the reference list if the hierarchy actually changed
-            screens = screensUpdated;
+            screens = uiManager.GetScreens();
 
             screenOverviewList.Clear();
             foreach (var screen in screens) {
@@ -61,7 +57,7 @@ namespace Simfluencer.UI.Editor {
         }
 
         private Button CreateScreenButton(Screen screen) {
-            var button = new Button {text = screen.Name};
+            var button = new Button {text = screen.Name == string.Empty ? "<unnamed>" : screen.Name};
 
             button.clickable.clicked += () => {
                 // Don't use the Active property of the screen object for editing, because it's meant to be used in
@@ -74,7 +70,7 @@ namespace Simfluencer.UI.Editor {
             return button;
         }
 
-        private static bool ScreenListsEqual(List<Screen> a, List<Screen> b) {
+        private static bool ScreenListsEqual(IReadOnlyCollection<Screen> a, IReadOnlyCollection<Screen> b) {
             if (a == null || b == null) return false;
 
             var aNames = a.Select(s => s.Name).ToList();
