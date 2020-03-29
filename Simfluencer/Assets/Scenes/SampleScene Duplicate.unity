@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenName: Post
-  showTutorial: 1
+  showTutorial: 0
   textField: {fileID: 1389491475}
   buttonGroup: {fileID: 699073661}
   buttonPrefab: {fileID: 6790219457017048432, guid: c69b9194cb8a5bd429c091ffbf1c5305,
@@ -3809,7 +3809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &668544925
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6222,7 +6222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000011321157}
+  m_AnchoredPosition: {x: 0, y: -0.00006278232}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1097536364
@@ -8068,11 +8068,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f0158d62e292e4ba827d71a331304c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableMusic: 0
+  enableMusic: 1
   enableFx: 1
-  music: {fileID: 8300000, guid: ff625d720b83a89409149c7e4e480566, type: 3}
-  posMusic: {fileID: 0}
-  negMusic: {fileID: 0}
+  music: {fileID: 8300000, guid: 1eb95eae04b0f0f4292625466d4fd78e, type: 3}
 --- !u!4 &1414045622
 Transform:
   m_ObjectHideFlags: 0
@@ -9673,7 +9671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screenName: Main
-  showTutorial: 1
+  showTutorial: 0
   feed: {fileID: 1097536365}
 --- !u!1 &1879775992
 GameObject:

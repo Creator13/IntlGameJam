@@ -13,45 +13,25 @@ namespace Simfluencer {
         PostPool PostPool { get; }
     }
 
-    [System.Serializable]
-    public struct ScenarioSettings {
-        [SerializeField, Range(-1, 1)] private float positivityImpact;
-        [SerializeField, Range(-.5f, .5f)] private float credibilityImpact;
-        [SerializeField, Range(-1, 1)] private float followerChangeMultiplier;
-
-        public float PositivityImpact => positivityImpact;
-        public float CredibilityImpact => credibilityImpact;
-        public float FollowerChangeMultiplier => followerChangeMultiplier;
-    }
-
-    [System.Serializable]
-    public class GameSettings {
-        [SerializeField] internal int startFollowers = 48629;
-        [SerializeField, Range(0, 1)] internal float startCredibility = .58f;
-        [SerializeField, Range(-1, 1)] internal float startPositivity = 0f;
-        [SerializeField, Range(0, 1)] internal float basePostImpact = .2f;
-
-        [SerializeField] internal ScenarioSettings[] scenarioSettings;
-    }
-
     public class GameManager : MonoBehaviour, IGameManager {
         public static IGameManager Instance { get; private set; }
 
+        // Management and control components
         public PlayerInfo PlayerInfo { get; private set; }
         public GameStateManager GameStateManager { get; private set; }
         public PostPool PostPool { get; private set; }
+        public AudioController Audio { get; private set; }
 
+        // Serialized fields
         [SerializeField] private GameSettings settings;
+        [SerializeField] private List<Scenario> scenarios;
+        [SerializeField] private List<Post> neutralPosts;
 
+        // Serialized field properties
         public GameSettings GameSettings {
             get => settings;
             private set => settings = value;
         }
-
-        public int CurrentRound => GameStateManager.PostHistory.Count;
-
-        [SerializeField] private List<Scenario> scenarios;
-        [SerializeField] private List<Post> neutralPosts;
 
         private void Awake() {
             SettingTools.FitTargetResolution();
@@ -69,6 +49,7 @@ namespace Simfluencer {
             PlayerInfo = new PlayerInfo(settings.startFollowers);
             GameStateManager = new GameStateManager(scenarios, settings.startCredibility, settings.startPositivity);
             PostPool = new PostPool(GameStateManager, neutralPosts);
+            Audio = new AudioController(GameStateManager);
 
             Instance = this;
 

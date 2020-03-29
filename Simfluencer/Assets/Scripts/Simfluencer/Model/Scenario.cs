@@ -17,6 +17,13 @@ namespace Simfluencer.Model {
         [SerializeField] private Sprite icon;
         public Sprite Icon => icon;
 
+        [SerializeField] private AudioClip neutralMusic;
+        [SerializeField] private AudioClip negativeMusic;
+        [SerializeField] private AudioClip positiveMusic;
+        public AudioClip NeutralMusic => neutralMusic;
+        public AudioClip NegativeMusic => negativeMusic;
+        public AudioClip PositiveMusic => positiveMusic;
+
         [SerializeField] private BackgroundObject[] midwayBackgrounds = new BackgroundObject[4];
         [SerializeField] private BackgroundObject[] endBackgrounds = new BackgroundObject[4];
 
