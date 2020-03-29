@@ -83,8 +83,6 @@ namespace Simfluencer.Model {
             // Select posts to return based on the indexes
             selectedPosts.AddRange(randIndexes.Select(i => neutralPostList[i]));
 
-            Assert.IsTrue(selectedPosts.Count == 4);
-
             return selectedPosts;
         }
 

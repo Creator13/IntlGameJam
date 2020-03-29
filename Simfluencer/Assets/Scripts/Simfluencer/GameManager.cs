@@ -54,7 +54,7 @@ namespace Simfluencer {
         [SerializeField] private List<Post> neutralPosts;
 
         private void Awake() {
-            // SettingTools.FitTargetResolution();
+            SettingTools.FitTargetResolution();
             Assert.IsNull(Instance);
 
             // FIXME list shouldn't contain null elements in the first place
@@ -97,6 +97,7 @@ namespace Simfluencer {
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
+            // Do nothing
 #else
             Application.Quit();
 #endif
