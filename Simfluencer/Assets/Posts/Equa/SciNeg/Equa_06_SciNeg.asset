@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_06_SciNeg
+  m_Name: Equa_06_SciNeg
   m_EditorClassIdentifier: 
-  tagline: School budget rules
-  postContent: New budget rules for councils may hit special needs school spending
+  tagline: Richest men
+  postContent: "The world\u2019s 22 richest men are wealthier than all the women
+    in Africa"
   setting: 3
   impact: 1
   overrideSettings: 0

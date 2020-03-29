@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b44ec23ee69fda4499ec8dd72771a8aa, type: 3}
-  m_Name: New Scenario
+  m_Name: Climate Action
   m_EditorClassIdentifier: 
   scenarioName: 
+  icon: {fileID: 0}
+  neutralMusic: {fileID: 0}
+  negativeMusic: {fileID: 0}
+  positiveMusic: {fileID: 0}
   midwayBackgrounds:
   - {fileID: 0}
   - {fileID: 0}
@@ -23,4 +27,28 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  posts: []
+  posts:
+  - {fileID: 11400000, guid: 04a0921a66d254156bfe88cfb2a73a4d, type: 2}
+  - {fileID: 11400000, guid: c48621254aa9e4d39818196dfe9b584e, type: 2}
+  - {fileID: 11400000, guid: 0230ea673c0b94805b61bb48b14fe9e7, type: 2}
+  - {fileID: 11400000, guid: 5356ec17c20294ff08ec63caca0ee006, type: 2}
+  - {fileID: 11400000, guid: a79cfcc99248345ed986775fd57a8a72, type: 2}
+  - {fileID: 11400000, guid: 86aecb62cab2440119ded55429cb1461, type: 2}
+  - {fileID: 11400000, guid: 28d186583b69a4b09963b2a63f7e7ac1, type: 2}
+  - {fileID: 11400000, guid: 3482bcfe7995c43ea832f3e2fe1ec49f, type: 2}
+  - {fileID: 11400000, guid: db87b2ffb363246b1ad1971dfde879f3, type: 2}
+  - {fileID: 11400000, guid: e4a5552e83efe4f7bb23e26a07e5c8bd, type: 2}
+  - {fileID: 11400000, guid: 8f8535f26c085425d91e5514435f462c, type: 2}
+  - {fileID: 11400000, guid: d88047b1ce9664dc888646d09e7679dd, type: 2}
+  - {fileID: 11400000, guid: 7ce6f89c053c44e918040f8669d8d516, type: 2}
+  - {fileID: 11400000, guid: cceaea788ed254534bf6cfef5abf9f6c, type: 2}
+  - {fileID: 11400000, guid: 1b2b5c51d24624c7cb1ebce3aed35ccc, type: 2}
+  - {fileID: 11400000, guid: e88f65a076d9f424b8d1fa4fc3a210d5, type: 2}
+  - {fileID: 11400000, guid: f9ca568460de34843a5b55f9b769e29e, type: 2}
+  - {fileID: 11400000, guid: 8384efae2b3374a17886d52e52a2352b, type: 2}
+  - {fileID: 11400000, guid: bf8092b7bbf314832a25ac6f82aec073, type: 2}
+  - {fileID: 11400000, guid: c23d8ca29f3a84f78858dd070383dcf2, type: 2}
+  - {fileID: 11400000, guid: 740089c0d799248fcbaad8c48117c5ac, type: 2}
+  - {fileID: 11400000, guid: 2eefdf3e41ead41248a57ae052ed0b06, type: 2}
+  - {fileID: 11400000, guid: c8c5d944f8653447d8e5b1757ab77d81, type: 2}
+  - {fileID: 11400000, guid: 739fe3274312d42ee91b37d8d995bf03, type: 2}

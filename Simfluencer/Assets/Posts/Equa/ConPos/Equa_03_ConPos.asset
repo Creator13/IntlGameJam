@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_03_ConPos
+  m_Name: Equa_03_ConPos
   m_EditorClassIdentifier: 
-  tagline: School eco-education
-  postContent: Climate crisis and eco-education to be added to schools curriculum
-    world wide
+  tagline: Racism for everyone
+  postContent: Scientists reveal that anyone can experience racism
   setting: 0
   impact: 1
   overrideSettings: 0

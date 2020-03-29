@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Poverty
   m_EditorClassIdentifier: 
   scenarioName: 
+  icon: {fileID: 0}
+  neutralMusic: {fileID: 0}
+  negativeMusic: {fileID: 0}
+  positiveMusic: {fileID: 0}
   midwayBackgrounds:
   - {fileID: 0}
   - {fileID: 0}
@@ -23,4 +27,28 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  posts: []
+  posts:
+  - {fileID: 11400000, guid: b1abea974771d433799e72c53ee402d4, type: 2}
+  - {fileID: 11400000, guid: 8bb140a98d6494f8dbebd803f0e976ce, type: 2}
+  - {fileID: 11400000, guid: 73d9fd296959e46cca0d64141d02bb85, type: 2}
+  - {fileID: 11400000, guid: 37fa2c4334d1946039c25185dda263bf, type: 2}
+  - {fileID: 11400000, guid: e4ffbd3806e3b492ebb6654937f3520b, type: 2}
+  - {fileID: 11400000, guid: 50b85dce7963948dab73d591147424a2, type: 2}
+  - {fileID: 11400000, guid: a9047330357514c52ac545aa023f2f0b, type: 2}
+  - {fileID: 11400000, guid: a1f95b4c542b84f54ad36154e597468d, type: 2}
+  - {fileID: 11400000, guid: 147a61560606b441fb7657aa1bd77fe3, type: 2}
+  - {fileID: 11400000, guid: 51c4c0c1d3abd46db97accc3c72b5b5f, type: 2}
+  - {fileID: 11400000, guid: 8c2cc401c3312475d99106152adfb403, type: 2}
+  - {fileID: 11400000, guid: 4a65616d0f7134419b71119983263878, type: 2}
+  - {fileID: 11400000, guid: 19ecf65e097f94f23ad632db2836b54a, type: 2}
+  - {fileID: 11400000, guid: 517a8b7ec9485410c942873995375fbe, type: 2}
+  - {fileID: 11400000, guid: 1640e5a38018f4834a53a6aa28378918, type: 2}
+  - {fileID: 11400000, guid: 78a194a65a8a44b77a65052eb8c05b38, type: 2}
+  - {fileID: 11400000, guid: 022dc9006cc884eea8629ff97c7d4916, type: 2}
+  - {fileID: 11400000, guid: 7e2a6f21d6126429c82a7dd5cae442f1, type: 2}
+  - {fileID: 11400000, guid: 4eee16391cd3648e78aff27115875aa9, type: 2}
+  - {fileID: 11400000, guid: 251b0b895a98e42c5980f23c22ee4d7d, type: 2}
+  - {fileID: 11400000, guid: 3368eb27d2f964884aa65a200acab3d7, type: 2}
+  - {fileID: 11400000, guid: d5407b9f573214f1b9a23a827efedb16, type: 2}
+  - {fileID: 11400000, guid: 49e6a6c86cdb743bd95f4a21f235cfd5, type: 2}
+  - {fileID: 11400000, guid: 54e44713aa6a14c5d8b1519961016683, type: 2}

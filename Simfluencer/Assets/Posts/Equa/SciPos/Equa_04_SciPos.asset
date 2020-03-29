@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_04_SciPos
+  m_Name: Equa_04_SciPos
   m_EditorClassIdentifier: 
-  tagline: Use drama to teach
-  postContent: Man uses drama to educate about TB in New Guinea
+  tagline: Trans video game
+  postContent: A lead trans character has been included in a major video game for
+    the first time
   setting: 2
   impact: 1
   overrideSettings: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_02_ConNeg
+  m_Name: Equa_02_ConNeg
   m_EditorClassIdentifier: 
-  tagline: Girls no longer in school
-  postContent: Girls are no longer allowed to go to primary school in South Africa
+  tagline: White male nominees
+  postContent: Oscar nominees can no longer be white middle aged men
   setting: 1
   impact: 1
   overrideSettings: 0

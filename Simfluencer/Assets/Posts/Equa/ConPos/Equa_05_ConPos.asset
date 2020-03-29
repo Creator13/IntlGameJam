@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_05_ConPos
+  m_Name: Equa_05_ConPos
   m_EditorClassIdentifier: 
-  tagline: Free education
-  postContent: WHO intruduces a free to use online education program
+  tagline: School holidays
+  postContent: HKU students now have the same amount of school holidays as any other
+    school
   setting: 0
   impact: 1
   overrideSettings: 0

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0be8f49eb4aa40beba290fa8e9f67e25, type: 3}
-  m_Name: Edu_02_ConPos
+  m_Name: Equa_02_ConPos
   m_EditorClassIdentifier: 
-  tagline: Games increase grades
-  postContent: Students who play mobile games in class instead of taking notes tend
-    to get higher grades for tests
+  tagline: Oscar nominees
+  postContent: Oscar nominees are no longer primarily white
   setting: 0
   impact: 1
   overrideSettings: 0
