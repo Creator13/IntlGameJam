@@ -34,7 +34,7 @@ namespace Simfluencer {
         }
 
         private void Awake() {
-#if !UNITY_ANDROID
+#if UNITY_STANDALONE_WIN
             SettingTools.FitTargetResolution();
 #endif
             Assert.IsNull(Instance);

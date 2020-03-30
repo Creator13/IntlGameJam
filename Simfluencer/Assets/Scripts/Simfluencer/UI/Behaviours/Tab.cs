@@ -19,7 +19,8 @@ namespace Simfluencer.UI {
         public bool IsSelected {
             set {
                 // if (!isActiveAndEnabled) return;
-                
+                if (!ImageComponent || !button) return;
+
                 ImageComponent.sprite = value ? button.spriteState.selectedSprite : originalSprite;
                 button.enabled = !value;
             }

@@ -94,15 +94,15 @@ namespace Simfluencer.Model {
         public override GameState CheckTransition(Post post) {
             // Go to ending when player posts about the topic once more
             if (post.scenario == scenario) {
-                return new EndState(stateMachine);
+                return new EndState(stateMachine, scenario);
             }
             
             return null;
         }
     }
 
-    public class EndState : GameState {
-        public EndState(GameStateManager stateMachine) : base(stateMachine) { }
+    public class EndState : ScenarioBaseState {
+        public EndState(GameStateManager stateMachine, Scenario scenario) : base(stateMachine, scenario) { }
 
         public override GameState CheckTransition(Post post) {
             return null;
